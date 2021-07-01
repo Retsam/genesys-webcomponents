@@ -1,0 +1,54 @@
+@import (reference) '../../../../style/color.less';
+@import (reference) '../../../../style/spacing.less';
+@import (reference) '../../../../style/mixins.less';
+
+@gux-off-tab-fill: @gux-grey-40;
+
+// Style
+gux-tab-beta {
+  .tab-title {
+    color: @gux-type;
+  }
+
+  .gux-tab-beta {
+    // display: flex;
+    align-items: center;
+    max-width: 160px;
+    height: 40px;
+    padding: 0 @spacing-medium;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    background-color: @gux-grey-90;
+    border: none;
+
+    // &.gux-show {
+    //   width: 160px;
+    // }
+
+    .tab-title {
+      overflow: hidden;
+      font-size: 14px;
+      white-space: nowrap;
+      cursor: default;
+    }
+
+    &:focus-visible {
+      outline: none;
+      .focus-ring();
+    }
+
+    &.selected {
+      border-bottom: 3px solid @gux-blue-60;
+    }
+
+    &:hover:not(.selected) {
+      border-bottom: 1px solid @gux-grey-10;
+    }
+
+    &.disabled {
+      .tab-title {
+        color: @gux-black-50;
+      }
+    }
+  }
+}
