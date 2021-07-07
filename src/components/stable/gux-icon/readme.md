@@ -21,6 +21,8 @@
  - [gux-accordion](../gux-accordion)
  - [gux-action-button](../gux-action-button)
  - [gux-advanced-dropdown](../gux-advanced-dropdown)
+ - [gux-basic-tab](../../beta/gux-basic-tabs/gux-basic-tab)
+ - [gux-basic-tabs](../../beta/gux-basic-tabs)
  - [gux-breadcrumb-item](../gux-breadcrumbs/breadcrumb-item)
  - [gux-calendar](../gux-calendar)
  - [gux-color-picker-legacy](../../legacy/gux-color-picker-legacy)
@@ -46,11 +48,9 @@
  - [gux-spin-button-legacy](../../legacy/gux-spin-button-legacy)
  - [gux-submenu](../../beta/gux-flyout-menu/gux-menu/gux-submenu)
  - [gux-tab](../gux-tabs/gux-tab)
- - [gux-tab-beta](../../beta/gux-tabs-beta/gux-tab-beta)
  - [gux-tab-dropdown-option](../gux-tabs/gux-tab-dropdown-option)
  - [gux-table-beta](../../beta/gux-table)
  - [gux-tabs](../gux-tabs)
- - [gux-tabs-beta](../../beta/gux-tabs-beta)
  - [gux-tag-beta](../../beta/gux-tag)
  - [gux-text-field-legacy](../../legacy/gux-text-field-legacy)
 
@@ -60,6 +60,8 @@ graph TD;
   gux-accordion --> gux-icon
   gux-action-button --> gux-icon
   gux-advanced-dropdown --> gux-icon
+  gux-basic-tab --> gux-icon
+  gux-basic-tabs --> gux-icon
   gux-breadcrumb-item --> gux-icon
   gux-calendar --> gux-icon
   gux-color-picker-legacy --> gux-icon
@@ -85,11 +87,9 @@ graph TD;
   gux-spin-button-legacy --> gux-icon
   gux-submenu --> gux-icon
   gux-tab --> gux-icon
-  gux-tab-beta --> gux-icon
   gux-tab-dropdown-option --> gux-icon
   gux-table-beta --> gux-icon
   gux-tabs --> gux-icon
-  gux-tabs-beta --> gux-icon
   gux-tag-beta --> gux-icon
   gux-text-field-legacy --> gux-icon
   style gux-icon fill:#f9f,stroke:#333,stroke-width:4px

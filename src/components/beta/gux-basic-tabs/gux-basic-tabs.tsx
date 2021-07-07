@@ -11,7 +11,6 @@ import {
   Watch,
   writeTask
 } from '@stencil/core';
-import Sortable, { MoveEvent } from 'sortablejs';
 
 import { trackComponent } from '../../../usage-tracking';
 import { buildI18nForComponent, GetI18nValue } from '../../../i18n';
@@ -19,51 +18,39 @@ import { whenEventIsFrom } from '../../../utils/dom/when-event-is-from';
 
 import tabsResources from './i18n/en.json';
 
+import {
+  GuxBasicTabsOrientation,
+  GuxBasicTabsAlignment
+} from './gux-basic-tabs.types';
+
 @Component({
-  styleUrl: 'gux-tabs-beta.less',
-  tag: 'gux-tabs-beta',
+  styleUrl: 'gux-basic-tabs.less',
+  tag: 'gux-basic-tabs',
   shadow: true
 })
 export class GuxTabsBeta {
   /**
-   * Enable tab sorting by drag/drop
-   */
-  @Prop() allowSort: boolean = false;
-
-  // /**
-  //  * Enable new tab button
-  //  */
-  // @Prop() showNewTabButton: boolean = false;
-
-  /**
    * tabId of the currently selected tab
    */
-  @Prop() value: string = '';
+  @Prop()
+  value: string = '';
 
   /**
-   * Maximum nuber of tabs created
+   * Tab orientation
    */
-  @Prop() tabLimit: number = Infinity;
+  @Prop()
+  orientation: GuxBasicTabsOrientation = 'horizontal';
 
   /**
-   * Disable new tab button event
+   * Tab alignment
    */
-  @State() disableAddTabButton: boolean = false;
-
-  /**
-   * Triggers when the new tab button is selected.
-   */
-  @Event() newTab: EventEmitter;
+  @Prop()
+  alignment: GuxBasicTabsAlignment = 'left';
 
   /**
    * Triggers when a tab is selected.
    */
   @Event() input: EventEmitter;
-
-  /**
-   * Triggers when the sorting of the tabs is changed.
-   */
-  @Event() sortChanged: EventEmitter<string[]>;
 
   @Element()
   private root: HTMLElement;
@@ -72,8 +59,6 @@ export class GuxTabsBeta {
 
   private i18n: GetI18nValue;
 
-  private sortableInstance?: Sortable;
-
   private resizeObserver?: ResizeObserver;
 
   private domObserver?: MutationObserver;
@@ -81,7 +66,7 @@ export class GuxTabsBeta {
   @Watch('value')
   watchHandler(newValue: string) {
     const tabs: HTMLGuxTabElement[] = Array.from(
-      this.root.querySelectorAll('gux-tab-beta')
+      this.root.querySelectorAll('gux-basic-tab')
     );
 
     for (const tab of tabs) {
@@ -91,7 +76,7 @@ export class GuxTabsBeta {
 
   @Listen('internaltabselected')
   internaltabselectedHandler(e: CustomEvent) {
-    whenEventIsFrom('gux-tab-beta', e, elem => {
+    whenEventIsFrom('gux-basic-tab', e, elem => {
       const tab = elem as HTMLGuxTabElement;
       if (!tab.active) {
         this.value = tab.tabId;
@@ -100,38 +85,10 @@ export class GuxTabsBeta {
     });
   }
 
-  createSortable() {
-    this.sortableInstance = new Sortable(this.root, {
-      animation: 250,
-      draggable: 'gux-tab-beta',
-      filter: '.ignore-sort',
-      onMove: (event: MoveEvent) => {
-        return !event.related.classList.contains('ignore-sort');
-      },
-      onUpdate: () => {
-        const tabIds = Array.from(
-          this.root.querySelectorAll('gux-tab-beta')
-        ).map(tabElement => tabElement.tabId);
-        this.sortChanged.emit(tabIds);
-      }
-    });
-  }
-
-  destroySortable() {
-    if (this.sortableInstance) {
-      this.sortableInstance.destroy();
-      this.sortableInstance = null;
-    }
-  }
-
   disconnectedCallback() {
-    if (this.sortableInstance) {
-      this.destroySortable();
-    }
-
     if (this.resizeObserver) {
       this.resizeObserver.unobserve(
-        this.root.shadowRoot.querySelector('.gux-tabs-beta')
+        this.root.shadowRoot.querySelector('.gux-basic-tabs')
       );
     }
 
@@ -146,12 +103,9 @@ export class GuxTabsBeta {
   }
 
   componentWillRender() {
-    const tabs: HTMLGuxTabElement[] = Array.from(
-      this.root.querySelectorAll('gux-tab-beta')
-    );
-    if (tabs.length >= this.tabLimit) {
-      this.disableAddTabButton = true;
-    }
+    // const tabs: HTMLGuxTabElement[] = Array.from(
+    //   this.root.querySelectorAll('gux-basic-tab')
+    // );
   }
 
   checkForScrollbarHideOrShow() {
@@ -166,10 +120,6 @@ export class GuxTabsBeta {
   }
 
   componentDidLoad() {
-    if (this.allowSort && !this.sortableInstance) {
-      this.createSortable();
-    }
-
     if (!this.resizeObserver && window.ResizeObserver) {
       this.resizeObserver = new ResizeObserver(
         this.checkForScrollbarHideOrShow.bind(this)
@@ -178,7 +128,7 @@ export class GuxTabsBeta {
 
     if (this.resizeObserver) {
       this.resizeObserver.observe(
-        this.root.shadowRoot.querySelector('.gux-tabs-beta')
+        this.root.shadowRoot.querySelector('.gux-basic-tabs')
       );
     }
 
@@ -206,7 +156,7 @@ export class GuxTabsBeta {
       readTask(() => {
         if (this.value) {
           const activeTab: any = this.root.querySelector(
-            `gux-tab-beta[tab-id='${this.value}']`
+            `gux-basic-tab[tab-id='${this.value}']`
           );
           if (activeTab) {
             activeTab.active = true;
@@ -234,7 +184,9 @@ export class GuxTabsBeta {
 
   render() {
     return (
-      <div class="gux-tabs-beta">
+      <div
+        class={`gux-basic-tabs gux-${this.alignment} gux-${this.orientation}`}
+      >
         <div class="action-button-container">
           {this.hasScrollbar ? (
             <button

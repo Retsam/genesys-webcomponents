@@ -6,16 +6,21 @@ import {
   h,
   Host,
   JSX,
-  Prop
+  Prop,
+  State
 } from '@stencil/core';
 
 import { eventIsFrom } from '../../../../utils/dom/event-is-from';
 
 @Component({
-  styleUrl: 'gux-tab-beta.less',
-  tag: 'gux-tab-beta'
+  styleUrl: 'gux-basic-tab.less',
+  tag: 'gux-basic-tab'
 })
 export class GuxTabBeta {
+  private tabName: string;
+
+  @Element()
+  private root: HTMLElement;
   /**
    * unique id for the tab
    */
@@ -31,8 +36,12 @@ export class GuxTabBeta {
    */
   @Prop() tabIconName: string;
 
-  @Element()
-  private root: HTMLElement;
+  @Prop() iconOnly: boolean;
+
+  // @Element()
+  // private root: HTMLElement;
+
+  @State() private showTooltip: boolean = true;
 
   @Event()
   private internaltabselected: EventEmitter<void>;
@@ -45,11 +54,30 @@ export class GuxTabBeta {
     this.internaltabselected.emit();
   }
 
+  componentWillLoad() {
+    this.tabName = this.root.querySelector('span[slot="title"]').innerHTML;
+    this.checkForTooltipHideOrShow();
+  }
+
+  private checkForTooltipHideOrShow() {
+    const clientWidth = this.root.clientWidth;
+    // console.log(clientWidth, 'clientWidth')
+    if (clientWidth < 158 && !this.iconOnly) {
+      this.showTooltip = false;
+    }
+  }
+
+  private renderTooltip() {
+    if (this.showTooltip) {
+      return <gux-tooltip>{this.tabName}</gux-tooltip>;
+    }
+  }
+
   render(): JSX.Element {
     return (
       <Host>
         <button
-          class={`gux-tab-beta ${this.active ? 'selected' : ''}`}
+          class={`gux-basic-tab ${this.active ? 'selected' : ''}`}
           type="button"
           onClick={e => this.selectTab(e)}
           role="button"
@@ -62,11 +90,11 @@ export class GuxTabBeta {
               ></gux-icon>
             </div>
           ) : null}
-          <span class="tab-title">
+          <span class={`tab-title ${this.iconOnly ? 'gux-hidden' : ''}`}>
             <slot name="title" />
           </span>
         </button>
-        <gux-tooltip>test tooltip</gux-tooltip>
+        {this.renderTooltip()}
       </Host>
     );
   }

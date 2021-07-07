@@ -5,13 +5,13 @@
 @gux-off-tab-fill: @gux-grey-40;
 
 // Style
-gux-tab-beta {
+gux-basic-tab {
   .tab-title {
     color: @gux-type;
   }
 
-  .gux-tab-beta {
-    // display: flex;
+  .gux-basic-tab {
+    display: flex;
     align-items: center;
     max-width: 160px;
     height: 40px;
@@ -30,6 +30,9 @@ gux-tab-beta {
       font-size: 14px;
       white-space: nowrap;
       cursor: default;
+      &.gux-hidden {
+        display: none;
+      }
     }
 
     &:focus-visible {

@@ -6,9 +6,27 @@
 @gux-off-tab-fill: @gux-grey-40;
 
 // Style
-.gux-tabs-beta {
+.gux-basic-tabs {
+  // .gux-left {
+
+  // }
+  // .gux-full {
+
+  // }
+  // .gux-center {
+
+  // }
+
+  // .gux-vertical {
+
+  // }
+
+  // .gux-horizontal {
+
+  // }
   display: flex;
-  align-items: flex-end;
+  justify-content: flex-end;
+  // align-items: flex-end;
   width: 100%;
   height: 40px;
   overflow-x: hidden;
@@ -121,16 +139,16 @@
 }
 
 .gux-light-theme {
-  .gux-tabs-beta {
+  .gux-basic-tabs {
     .gux-tabs-light-theme();
   }
 }
 
-.gux-tabs-beta.gux-light-theme {
+.gux-basic-tabs.gux-light-theme {
   .gux-tabs-light-theme();
 }
 
 // Default
-.gux-tabs-beta {
+.gux-basic-tabs {
   .gux-tabs-light-theme();
 }
