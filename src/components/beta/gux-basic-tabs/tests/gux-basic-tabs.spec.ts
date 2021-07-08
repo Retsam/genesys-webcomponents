@@ -1,65 +1,36 @@
 import { newSpecPage, SpecPage } from '@stencil/core/testing';
 
-import { GuxTabs } from '../gux-tabs';
-import { GuxTab } from '../gux-tab/gux-tab';
-import { GuxTabDropdownOption } from '../gux-tab-dropdown-option/gux-tab-dropdown-option';
+import { GuxBasicTabs } from '../gux-basic-tabs';
+import { GuxBasicTab } from '../gux-basic-tab/gux-basic-tab';
 
-const components = [GuxTabs, GuxTab, GuxTabDropdownOption];
+const components = [GuxBasicTabs, GuxBasicTab];
 const language = 'en';
 
-describe('gux-tabs', () => {
+describe('gux-basic-tabs', () => {
   let page: SpecPage;
 
   beforeEach(async () => {
     page = await newSpecPage({
       components,
       html: `
-        <gux-tabs id="interactive">
-          <gux-tab tab-id="1" tab-icon-name="lock">
-            <span slot="title"> Hello World </span>
-            <span slot="dropdown-options">
-              <gux-tab-dropdown-option
-                option-id="1"
-                icon-name="edit"
-                onclick="notify(event)"
-              >
-                Edit
-              </gux-tab-dropdown-option>
-              <gux-tab-dropdown-option
-                option-id="2"
-                icon-name="clone"
-                onclick="notify(event)"
-              >
-                Clone
-              </gux-tab-dropdown-option>
-              <gux-tab-dropdown-option
-                option-id="3"
-                icon-name="share"
-                onclick="notify(event)"
-              >
-                Share
-              </gux-tab-dropdown-option>
-              <gux-tab-dropdown-option
-                option-id="4"
-                icon-name="download"
-                onclick="notify(event)"
-              >
-                Download
-              </gux-tab-dropdown-option>
-            </span>
-          </gux-tab>
+        <gux-basic-tabs id="interactive">
+          <span slot="tabs">
+            <gux-tab tab-id="1">
+              <span slot="title"> Hello World </span>
+            </gux-tab>
 
-          <gux-tab tab-id="2" tab-icon-name="lock">
-            <span slot="title"> Hello World 2 </span>
-          </gux-tab>
-        </gux-tabs>
+            <gux-tab tab-id="2">
+              <span slot="title"> Hello World 2 </span>
+            </gux-tab>
+          </span>
+        </gux-basic-tabs>
       `,
       language
     });
   });
 
   it('should build', async () => {
-    expect(page.rootInstance).toBeInstanceOf(GuxTabs);
+    expect(page.rootInstance).toBeInstanceOf(GuxBasicTabs);
   });
 
   it('should render', async () => {

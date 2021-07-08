@@ -4,6 +4,7 @@ import {
   Event,
   EventEmitter,
   h,
+  Host,
   Listen,
   Prop,
   readTask,
@@ -28,7 +29,7 @@ import {
   tag: 'gux-basic-tabs',
   shadow: true
 })
-export class GuxTabsBeta {
+export class GuxBasicTabs {
   /**
    * tabId of the currently selected tab
    */
@@ -100,12 +101,6 @@ export class GuxTabsBeta {
   async componentWillLoad(): Promise<void> {
     trackComponent(this.root);
     this.i18n = await buildI18nForComponent(this.root, tabsResources);
-  }
-
-  componentWillRender() {
-    // const tabs: HTMLGuxTabElement[] = Array.from(
-    //   this.root.querySelectorAll('gux-basic-tab')
-    // );
   }
 
   checkForScrollbarHideOrShow() {
@@ -184,35 +179,40 @@ export class GuxTabsBeta {
 
   render() {
     return (
-      <div
-        class={`gux-basic-tabs gux-${this.alignment} gux-${this.orientation}`}
-      >
-        <div class="action-button-container">
-          {this.hasScrollbar ? (
-            <button
-              title={this.i18n('scrollLeft')}
-              class="arrow-button"
-              onClick={() => this.scrollLeft()}
-            >
-              <gux-icon icon-name="chevron-left" decorative={true} />
-            </button>
-          ) : null}
+      <Host>
+        <div
+          class={`gux-basic-tabs gux-${this.alignment} gux-${this.orientation}`}
+        >
+          <div class="scroll-button-container">
+            {this.hasScrollbar ? (
+              <button
+                title={this.i18n('scrollLeft')}
+                class="scroll-button"
+                onClick={() => this.scrollLeft()}
+              >
+                <gux-icon icon-name="chevron-left" decorative={true} />
+              </button>
+            ) : null}
+          </div>
+          <div class="scrollable-section">
+            <slot name="tabs" />
+          </div>
+          <div class="scroll-button-container">
+            {this.hasScrollbar ? (
+              <button
+                title={this.i18n('scrollRight')}
+                class="scroll-button"
+                onClick={() => this.scrollRight()}
+              >
+                <gux-icon icon-name="chevron-right" decorative={true} />
+              </button>
+            ) : null}
+          </div>
         </div>
-        <div class="scrollable-section">
-          <slot />
+        <div>
+          <slot name="tabpanel"></slot>
         </div>
-        <div class="action-button-container">
-          {this.hasScrollbar ? (
-            <button
-              title={this.i18n('scrollRight')}
-              class="arrow-button"
-              onClick={() => this.scrollRight()}
-            >
-              <gux-icon icon-name="chevron-right" decorative={true} />
-            </button>
-          ) : null}
-        </div>
-      </div>
+      </Host>
     );
   }
 }

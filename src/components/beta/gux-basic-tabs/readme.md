@@ -7,11 +7,11 @@
 
 ## Properties
 
-| Property      | Attribute     | Description                         | Type                           | Default        |
-| ------------- | ------------- | ----------------------------------- | ------------------------------ | -------------- |
-| `alignment`   | `alignment`   | Tab alignment                       | `"center" \| "full" \| "left"` | `'left'`       |
-| `orientation` | `orientation` | Tab orientation                     | `"horizontal" \| "vertical"`   | `"horizontal"` |
-| `value`       | `value`       | tabId of the currently selected tab | `string`                       | `''`           |
+| Property      | Attribute     | Description                         | Type                                | Default        |
+| ------------- | ------------- | ----------------------------------- | ----------------------------------- | -------------- |
+| `alignment`   | `alignment`   | Tab alignment                       | `"center" \| "fullWidth" \| "left"` | `'left'`       |
+| `orientation` | `orientation` | Tab orientation                     | `"horizontal" \| "vertical"`        | `'horizontal'` |
+| `value`       | `value`       | tabId of the currently selected tab | `string`                            | `''`           |
 
 
 ## Events

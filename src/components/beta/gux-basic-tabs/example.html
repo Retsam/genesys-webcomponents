@@ -2,125 +2,188 @@
 
 <h2>Example 1</h2>
 
-<gux-basic-tabs
-  id="interactive"
-  allow-sort="true"
-  show-new-tab-button="true"
-  tab-limit="10"
->
-  <gux-basic-tab tab-id="9">
-    <span slot="title"> Hello 1 </span>
-  </gux-basic-tab>
-  <gux-basic-tab tab-id="10">
-    <span slot="title"> Hello 2 </span>
-  </gux-basic-tab>
-  <gux-basic-tab tab-id="11">
-    <span slot="title"> Hello 3 </span>
-  </gux-basic-tab>
-  <gux-basic-tab tab-id="12">
-    <span slot="title"> Hello 4 </span>
-  </gux-basic-tab>
-  <gux-basic-tab tab-id="13">
-    <span slot="title"> Hello 5 </span>
-  </gux-basic-tab>
-  <gux-basic-tab tab-id="14">
-    <span slot="title"> Hello 6 </span>
-  </gux-basic-tab>
-  <gux-basic-tab tab-id="15">
-    <span slot="title"> Hello 7 </span>
-  </gux-basic-tab>
-  <gux-basic-tab tab-id="16">
-    <span slot="title"> Hello 8 </span>
-  </gux-basic-tab>
-  <gux-basic-tab tab-id="17">
-    <span slot="title"> Hello 9 </span>
-  </gux-basic-tab>
-  <gux-basic-tab tab-id="18">
-    <span slot="title"> Hello 10 </span>
-  </gux-basic-tab>
+<gux-basic-tabs id="gux-tabs-example-1">
+  <span slot="tabs">
+    <gux-basic-tab tab-id="1">
+      <span slot="title">Hello 1</span>
+    </gux-basic-tab>
+    <gux-basic-tab tab-id="2">
+      <span slot="title">Hello 2</span>
+    </gux-basic-tab>
+    <gux-basic-tab tab-id="3">
+      <span slot="title">Hello 3</span>
+    </gux-basic-tab>
+    <gux-basic-tab tab-id="4">
+      <span slot="title">Hello 4</span>
+    </gux-basic-tab>
+    <gux-basic-tab tab-id="5">
+      <span slot="title">Hello 5</span>
+    </gux-basic-tab>
+    <gux-basic-tab tab-id="6">
+      <span slot="title">Hello 6</span>
+    </gux-basic-tab>
+    <gux-basic-tab tab-id="7">
+      <span slot="title">Hello 7</span>
+    </gux-basic-tab>
+    <gux-basic-tab tab-id="8">
+      <span slot="title">Hello 8</span>
+    </gux-basic-tab>
+    <gux-basic-tab tab-id="9">
+      <span slot="title">Hello 9</span>
+    </gux-basic-tab>
+    <gux-basic-tab tab-id="10">
+      <span slot="title">Hello 10</span>
+    </gux-basic-tab>
+  </span>
 </gux-basic-tabs>
 
-<h2>Example 2</h2>
+<h2>Example 2 -- With tabpanel content</h2>
 
-<gux-basic-tabs
-  id="interactive2"
-  allow-sort="true"
-  show-new-tab-button="true"
-  tab-limit="10"
->
-  <gux-basic-tab tab-id="19">
-    <span slot="title"> Hello 1 </span>
-  </gux-basic-tab>
-  <gux-basic-tab tab-id="20">
-    <span slot="title"> Hello 2 </span>
-  </gux-basic-tab>
-  <gux-basic-tab tab-id="21">
-    <span slot="title"> Hello 3 </span>
-  </gux-basic-tab>
+<gux-basic-tabs id="gux-tabs-example-2">
+  <span slot="tabs">
+    <gux-basic-tab tab-id="11">
+      <span slot="title">Hello 1</span>
+    </gux-basic-tab>
+    <gux-basic-tab tab-id="12">
+      <span slot="title">Hello 2</span>
+    </gux-basic-tab>
+    <gux-basic-tab tab-id="13">
+      <span slot="title">Hello 3</span>
+    </gux-basic-tab>
+    <gux-basic-tab tab-id="14">
+      <span slot="title">Hello 4</span>
+    </gux-basic-tab>
+    <gux-basic-tab tab-id="15">
+      <span slot="title">Hello 5</span>
+    </gux-basic-tab>
+    <gux-basic-tab tab-id="16">
+      <span slot="title">Hello 6</span>
+    </gux-basic-tab>
+    <gux-basic-tab tab-id="17">
+      <span slot="title">Hello 7</span>
+    </gux-basic-tab>
+    <gux-basic-tab tab-id="18">
+      <span slot="title">Hello 8</span>
+    </gux-basic-tab>
+    <gux-basic-tab tab-id="19">
+      <span slot="title">Hello 9</span>
+    </gux-basic-tab>
+    <gux-basic-tab tab-id="20">
+      <span slot="title">Hello 10</span>
+    </gux-basic-tab>
+  </span>
+  <span slot="tabpanel">
+    <p>
+      "Sed ut perspiciatis unde omnis iste natus error sit voluptatem
+      accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab
+      illo inventore veritatis et quasi architecto beatae vitae dicta sunt
+      explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut
+      odit aut fugit, sed quia consequuntur magni dolores eos qui ratione
+      voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum
+      quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam
+      eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat
+      voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam
+      corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur?
+      Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam
+      nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas
+      nulla pariatur?"
+    </p>
+    <gux-button>sample button</gux-button>
+  </span>
 </gux-basic-tabs>
 
-<h2>Example 3 -- Vertical Alignment</h2>
+<h2>Example 3 -- just a few tabs</h2>
 
-<gux-basic-tabs
-  orientation="vertical"
-  id="interactive2"
-  allow-sort="true"
-  show-new-tab-button="true"
-  tab-limit="10"
->
-  <gux-basic-tab tab-id="19">
-    <span slot="title"> Hello 1 </span>
-  </gux-basic-tab>
-  <gux-basic-tab tab-id="20">
-    <span slot="title"> Hello 2 </span>
-  </gux-basic-tab>
-  <gux-basic-tab tab-id="21">
-    <span slot="title"> Hello 3 Hello 3 Hello 3 Hello 3</span>
-  </gux-basic-tab>
+<gux-basic-tabs id="gux-tabs-example-3">
+  <span slot="tabs">
+    <gux-basic-tab tab-id="21">
+      <span slot="title">Hello 1</span>
+    </gux-basic-tab>
+    <gux-basic-tab tab-id="22">
+      <span slot="title">Hello 2</span>
+    </gux-basic-tab>
+    <gux-basic-tab tab-id="23">
+      <span slot="title">Hello 3 long long long long long</span>
+    </gux-basic-tab>
+  </span>
 </gux-basic-tabs>
 
-<h2>Example 4 only icons</h2>
+<h2>Example 4 -- Vertical Alignment (Styled with purple outline for now)</h2>
 
-<gux-basic-tabs
-  id="interactive2"
-  allow-sort="true"
-  show-new-tab-button="true"
-  tab-limit="10"
->
-  <gux-basic-tab tab-id="19" tab-icon-name="trashcan" icon-only="true">
-    <span slot="title"> Hello 1 </span>
-  </gux-basic-tab>
-  <gux-basic-tab tab-id="20" tab-icon-name="trashcan" icon-only="true">
-    <span slot="title"> Hello 2 </span>
-  </gux-basic-tab>
-  <gux-basic-tab tab-id="21" tab-icon-name="trashcan" icon-only="true">
-    <span slot="title"> Hello 3 </span>
-  </gux-basic-tab>
+<gux-basic-tabs orientation="vertical" id="gux-tabs-example-4">
+  <span slot="tabs">
+    <gux-basic-tab tab-id="24">
+      <span slot="title">Hello 1</span>
+    </gux-basic-tab>
+    <gux-basic-tab tab-id="25">
+      <span slot="title">Hello 2</span>
+    </gux-basic-tab>
+    <gux-basic-tab tab-id="26">
+      <span slot="title">Hello 3 long long long long long</span>
+    </gux-basic-tab>
+  </span>
 </gux-basic-tabs>
 
-<h2>Example 5 icons and text</h2>
+<h2>Example 5 -- only icons</h2>
 
-<gux-basic-tabs
-  id="interactive2"
-  allow-sort="true"
-  show-new-tab-button="true"
-  tab-limit="10"
->
-  <gux-basic-tab tab-id="19" tab-icon-name="trashcan">
-    <span slot="title"> Hello 1 </span>
-  </gux-basic-tab>
-  <gux-basic-tab tab-id="20" tab-icon-name="trashcan">
-    <span slot="title"> Hello 2 </span>
-  </gux-basic-tab>
-  <gux-basic-tab tab-id="21" tab-icon-name="trashcan">
-    <span slot="title"> Hello 3 </span>
-  </gux-basic-tab>
+<gux-basic-tabs id="gux-tabs-example-5">
+  <span slot="tabs">
+    <gux-basic-tab tab-id="27" tab-icon-name="trashcan" icon-only="true">
+      <span slot="title">Trash 1 </span>
+    </gux-basic-tab>
+    <gux-basic-tab tab-id="28" tab-icon-name="trashcan" icon-only="true">
+      <span slot="title">Trash 2 </span>
+    </gux-basic-tab>
+    <gux-basic-tab tab-id="29" tab-icon-name="trashcan" icon-only="true">
+      <span slot="title">Trash 3 </span>
+    </gux-basic-tab>
+  </span>
 </gux-basic-tabs>
 
-<h2>Example 4 -- Vertical Alignment</h2>
-<div class="container">
-  <button class="item">button</button>
-  <button class="item">button</button>
-  <button class="item">button</button>
-  <button class="item">button</button>
-</div>
+<h2>Example 6 icons and text</h2>
+
+<gux-basic-tabs id="gux-tabs-example-6">
+  <span slot="tabs">
+    <gux-basic-tab tab-id="30" tab-icon-name="trashcan">
+      <span slot="title">Hello 1</span>
+    </gux-basic-tab>
+    <gux-basic-tab tab-id="31" tab-icon-name="trashcan">
+      <span slot="title">Hello 2</span>
+    </gux-basic-tab>
+    <gux-basic-tab tab-id="32" tab-icon-name="trashcan">
+      <span slot="title">Hello 3</span>
+    </gux-basic-tab>
+  </span>
+</gux-basic-tabs>
+
+<h2>Example 7 full width tabs (styled with green outline for now)</h2>
+
+<gux-basic-tabs alignment="full-width" id="gux-tabs-example-6">
+  <span slot="tabs">
+    <gux-basic-tab tab-id="33">
+      <span slot="title">Hello 1</span>
+    </gux-basic-tab>
+    <gux-basic-tab tab-id="34">
+      <span slot="title">Hello 2</span>
+    </gux-basic-tab>
+    <gux-basic-tab tab-id="35">
+      <span slot="title">Hello 3</span>
+    </gux-basic-tab>
+  </span>
+</gux-basic-tabs>
+
+<h2>Example 7 center aligned tabs (styled with blue outline for now)</h2>
+
+<gux-basic-tabs alignment="center" id="gux-tabs-example-7">
+  <span slot="tabs">
+    <gux-basic-tab tab-id="36">
+      <span slot="title">Hello 1</span>
+    </gux-basic-tab>
+    <gux-basic-tab tab-id="37">
+      <span slot="title">Hello 2</span>
+    </gux-basic-tab>
+    <gux-basic-tab tab-id="38">
+      <span slot="title">Hello 3</span>
+    </gux-basic-tab>
+  </span>
+</gux-basic-tabs>

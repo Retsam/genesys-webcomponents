@@ -16,18 +16,14 @@ gux-basic-tab {
     max-width: 160px;
     height: 40px;
     padding: 0 @spacing-medium;
-    overflow: hidden;
-    text-overflow: ellipsis;
     background-color: @gux-grey-90;
     border: none;
 
-    // &.gux-show {
-    //   width: 160px;
-    // }
-
     .tab-title {
+      max-width: 160px;
       overflow: hidden;
       font-size: 14px;
+      text-overflow: ellipsis;
       white-space: nowrap;
       cursor: default;
       &.gux-hidden {
@@ -52,6 +48,9 @@ gux-basic-tab {
       .tab-title {
         color: @gux-black-50;
       }
+    }
+    .tab-icon-container {
+      padding: 0 3px;
     }
   }
 }

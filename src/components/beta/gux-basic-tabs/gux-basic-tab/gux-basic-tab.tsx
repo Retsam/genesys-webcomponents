@@ -16,7 +16,7 @@ import { eventIsFrom } from '../../../../utils/dom/event-is-from';
   styleUrl: 'gux-basic-tab.less',
   tag: 'gux-basic-tab'
 })
-export class GuxTabBeta {
+export class GuxBasicTab {
   private tabName: string;
 
   @Element()

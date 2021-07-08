@@ -1,13 +1,13 @@
 import { newSpecPage } from '@stencil/core/testing';
-import { GuxTab } from '../gux-tab';
+import { GuxBasicTab } from '../gux-basic-tab';
 
 describe('gux-tab', () => {
-  let component: GuxTab;
+  let component: GuxBasicTab;
 
   beforeEach(async () => {
     const page = await newSpecPage({
-      components: [GuxTab],
-      html: `<gux-tab></gux-tab>`,
+      components: [GuxBasicTab],
+      html: `<gux-basic-tab><span slot="title">Hello</span></gux-basic-tab>`,
       language: 'en'
     });
 
