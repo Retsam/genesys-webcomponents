@@ -4,11 +4,11 @@ exports[`gux-basic-tabs should render 1`] = `
 <gux-basic-tabs id="interactive">
   <mock:shadow-root>
     <div class="gux-basic-tabs gux-horizontal gux-left">
-      <div class="action-button-container"></div>
+      <div class="scroll-button-container"></div>
       <div class="scrollable-section">
         <slot name="tabs"></slot>
       </div>
-      <div class="action-button-container"></div>
+      <div class="scroll-button-container"></div>
     </div>
     <div>
       <slot name="tabpanel"></slot>
