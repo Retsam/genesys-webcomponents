@@ -36,11 +36,11 @@ gux-basic-tab {
       .focus-ring();
     }
 
-    &.selected {
+    &.gux-active {
       border-bottom: 3px solid @gux-blue-60;
     }
 
-    &:hover:not(.selected) {
+    &:hover:not(.gux-active) {
       border-bottom: 1px solid @gux-grey-10;
     }
 
@@ -49,7 +49,7 @@ gux-basic-tab {
         color: @gux-black-50;
       }
     }
-    .tab-icon-container {
+    [slot='icon'] {
       padding: 0 3px;
     }
   }

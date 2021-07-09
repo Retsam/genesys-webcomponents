@@ -16,11 +16,11 @@ describe('gux-basic-tabs', () => {
         <gux-basic-tabs id="interactive">
           <span slot="tabs">
             <gux-tab tab-id="1">
-              <span slot="title"> Hello World </span>
+              <span slot="title">Hello</span>
             </gux-tab>
 
             <gux-tab tab-id="2">
-              <span slot="title"> Hello World 2 </span>
+              <span slot="title">Hello 2</span>
             </gux-tab>
           </span>
         </gux-basic-tabs>

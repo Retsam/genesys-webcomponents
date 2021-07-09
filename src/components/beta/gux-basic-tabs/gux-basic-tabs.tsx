@@ -5,6 +5,7 @@ import {
   EventEmitter,
   h,
   Host,
+  JSX,
   Listen,
   Prop,
   readTask,
@@ -31,7 +32,7 @@ import {
 })
 export class GuxBasicTabs {
   /**
-   * tabId of the currently selected tab
+   * tabId of the active tab
    */
   @Prop()
   value: string = '';
@@ -49,7 +50,7 @@ export class GuxBasicTabs {
   alignment: GuxBasicTabsAlignment = 'left';
 
   /**
-   * Triggers when a tab is selected.
+   * Triggers when a tab is active.
    */
   @Event() input: EventEmitter;
 
@@ -75,8 +76,8 @@ export class GuxBasicTabs {
     }
   }
 
-  @Listen('internaltabselected')
-  internaltabselectedHandler(e: CustomEvent) {
+  @Listen('internaltabactive')
+  internaltabactiveHandler(e: CustomEvent) {
     whenEventIsFrom('gux-basic-tab', e, elem => {
       const tab = elem as HTMLGuxTabElement;
       if (!tab.active) {
@@ -183,36 +184,41 @@ export class GuxBasicTabs {
         <div
           class={`gux-basic-tabs gux-${this.alignment} gux-${this.orientation}`}
         >
-          <div class="scroll-button-container">
-            {this.hasScrollbar ? (
-              <button
-                title={this.i18n('scrollLeft')}
-                class="scroll-button"
-                onClick={() => this.scrollLeft()}
-              >
-                <gux-icon icon-name="chevron-left" decorative={true} />
-              </button>
-            ) : null}
-          </div>
+          {this.renderScrollButton('scrollLeft')}
           <div class="scrollable-section">
             <slot name="tabs" />
           </div>
-          <div class="scroll-button-container">
-            {this.hasScrollbar ? (
-              <button
-                title={this.i18n('scrollRight')}
-                class="scroll-button"
-                onClick={() => this.scrollRight()}
-              >
-                <gux-icon icon-name="chevron-right" decorative={true} />
-              </button>
-            ) : null}
-          </div>
+          {this.renderScrollButton('scrollRight')}
         </div>
         <div>
-          <slot name="tabpanel"></slot>
+          <slot name="tabContentPanel"></slot>
         </div>
       </Host>
+    );
+  }
+
+  private renderScrollButton(direction: string): JSX.Element {
+    return (
+      <div class="scroll-button-container">
+        {this.hasScrollbar ? (
+          <button
+            title={this.i18n(direction)}
+            class="scroll-button"
+            onClick={() =>
+              direction === 'scrollLeft'
+                ? this.scrollLeft()
+                : this.scrollRight()
+            }
+          >
+            <gux-icon
+              icon-name={
+                direction === 'scrollLeft' ? 'chevron-left' : 'chevron-right'
+              }
+              decorative={true}
+            />
+          </button>
+        ) : null}
+      </div>
     );
   }
 }

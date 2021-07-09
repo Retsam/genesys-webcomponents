@@ -11,18 +11,18 @@ exports[`gux-basic-tabs should render 1`] = `
       <div class="scroll-button-container"></div>
     </div>
     <div>
-      <slot name="tabpanel"></slot>
+      <slot name="tabContentPanel"></slot>
     </div>
   </mock:shadow-root>
   <span slot="tabs">
     <gux-tab tab-id="1">
       <span slot="title">
-        Hello World
+        Hello
       </span>
     </gux-tab>
     <gux-tab tab-id="2">
       <span slot="title">
-        Hello World 2
+        Hello 2
       </span>
     </gux-tab>
   </span>

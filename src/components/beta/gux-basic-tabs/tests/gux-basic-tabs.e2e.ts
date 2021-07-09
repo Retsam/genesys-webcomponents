@@ -6,11 +6,11 @@ describe('gux-basic-tabs', () => {
       <gux-basic-tabs id="interactive" lang="en">
         <span slot="tabs">
           <gux-basic-tab tab-id="1" tab-icon-name="lock">
-            <span slot="title"> Hello World </span>
+            <span slot="title">Hello</span>
           </gux-tab>
 
           <gux-tab tab-id="2" tab-icon-name="lock">
-            <span slot="title"> Hello World 2 </span>
+            <span slot="title">Hello 2</span>
           </gux-tab>
         </span>
       </gux-tabs>

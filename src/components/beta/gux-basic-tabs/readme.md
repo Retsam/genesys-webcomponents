@@ -7,18 +7,18 @@
 
 ## Properties
 
-| Property      | Attribute     | Description                         | Type                                | Default        |
-| ------------- | ------------- | ----------------------------------- | ----------------------------------- | -------------- |
-| `alignment`   | `alignment`   | Tab alignment                       | `"center" \| "fullWidth" \| "left"` | `'left'`       |
-| `orientation` | `orientation` | Tab orientation                     | `"horizontal" \| "vertical"`        | `'horizontal'` |
-| `value`       | `value`       | tabId of the currently selected tab | `string`                            | `''`           |
+| Property      | Attribute     | Description             | Type                                | Default        |
+| ------------- | ------------- | ----------------------- | ----------------------------------- | -------------- |
+| `alignment`   | `alignment`   | Tab alignment           | `"center" \| "fullWidth" \| "left"` | `'left'`       |
+| `orientation` | `orientation` | Tab orientation         | `"horizontal" \| "vertical"`        | `'horizontal'` |
+| `value`       | `value`       | tabId of the active tab | `string`                            | `''`           |
 
 
 ## Events
 
-| Event   | Description                      | Type               |
-| ------- | -------------------------------- | ------------------ |
-| `input` | Triggers when a tab is selected. | `CustomEvent<any>` |
+| Event   | Description                    | Type               |
+| ------- | ------------------------------ | ------------------ |
+| `input` | Triggers when a tab is active. | `CustomEvent<any>` |
 
 
 ## Dependencies

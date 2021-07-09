@@ -4,7 +4,6 @@ import {
   Event,
   EventEmitter,
   h,
-  Host,
   JSX,
   Prop,
   State
@@ -27,7 +26,7 @@ export class GuxBasicTab {
   @Prop() tabId: string;
 
   /**
-   * indicates whether or not the tab is selected
+   * indicates whether or not the tab is active
    */
   @Prop() active: boolean = false;
 
@@ -38,20 +37,17 @@ export class GuxBasicTab {
 
   @Prop() iconOnly: boolean;
 
-  // @Element()
-  // private root: HTMLElement;
-
   @State() private showTooltip: boolean = true;
 
   @Event()
-  private internaltabselected: EventEmitter<void>;
+  private internaltabactive: EventEmitter<void>;
 
   private selectTab(e: MouseEvent): void {
     if (eventIsFrom('.tab-dropdown-container', e)) {
       return;
     }
 
-    this.internaltabselected.emit();
+    this.internaltabactive.emit();
   }
 
   componentWillLoad() {
@@ -62,40 +58,39 @@ export class GuxBasicTab {
   private checkForTooltipHideOrShow() {
     const clientWidth = this.root.clientWidth;
     // console.log(clientWidth, 'clientWidth')
-    if (clientWidth < 158 && !this.iconOnly) {
+    if (clientWidth < 113 && !this.iconOnly) {
       this.showTooltip = false;
     }
+  }
+
+  render(): JSX.Element {
+    return [
+      <button
+        class={{
+          'gux-basic-tab': true,
+          'gux-active': this.active
+        }}
+        type="button"
+        onClick={e => this.selectTab(e)}
+        role="button"
+      >
+        <slot name="icon" />
+        <span
+          class={{
+            'tab-title': true,
+            'gux-hidden': this.iconOnly
+          }}
+        >
+          <slot name="title" />
+        </span>
+      </button>,
+      this.renderTooltip()
+    ];
   }
 
   private renderTooltip() {
     if (this.showTooltip) {
       return <gux-tooltip>{this.tabName}</gux-tooltip>;
     }
-  }
-
-  render(): JSX.Element {
-    return (
-      <Host>
-        <button
-          class={`gux-basic-tab ${this.active ? 'selected' : ''}`}
-          type="button"
-          onClick={e => this.selectTab(e)}
-          role="button"
-        >
-          {this.tabIconName ? (
-            <div class="tab-icon-container">
-              <gux-icon
-                icon-name={this.tabIconName}
-                decorative={true}
-              ></gux-icon>
-            </div>
-          ) : null}
-          <span class={`tab-title ${this.iconOnly ? 'gux-hidden' : ''}`}>
-            <slot name="title" />
-          </span>
-        </button>
-        {this.renderTooltip()}
-      </Host>
-    );
   }
 }
