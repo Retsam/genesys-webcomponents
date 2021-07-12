@@ -51,14 +51,14 @@ export class GuxBasicTab {
   }
 
   componentWillLoad() {
-    this.tabName = this.root.querySelector('span[slot="title"]').innerHTML;
+    this.tabName = this.root.querySelector('[slot="title"]').innerHTML;
     this.checkForTooltipHideOrShow();
   }
 
   private checkForTooltipHideOrShow() {
     const clientWidth = this.root.clientWidth;
     // console.log(clientWidth, 'clientWidth')
-    if (clientWidth < 113 && !this.iconOnly) {
+    if (clientWidth < 113 && !this.root.querySelector('gux-basic-tab-icon')) {
       this.showTooltip = false;
     }
   }
@@ -74,15 +74,7 @@ export class GuxBasicTab {
         onClick={e => this.selectTab(e)}
         role="button"
       >
-        <slot name="icon" />
-        <span
-          class={{
-            'tab-title': true,
-            'gux-hidden': this.iconOnly
-          }}
-        >
-          <slot name="title" />
-        </span>
+        <slot />
       </button>,
       this.renderTooltip()
     ];

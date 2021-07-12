@@ -5,34 +5,54 @@
 <gux-basic-tabs id="gux-tabs-example-1">
   <span slot="tabs">
     <gux-basic-tab tab-id="1">
-      <span slot="title">Hello 1</span>
+      <gux-basic-tab-title>
+        <span slot="title">Hello 1</span>
+      </gux-basic-tab-title>
     </gux-basic-tab>
     <gux-basic-tab tab-id="2">
-      <span slot="title">Hello 2</span>
+      <gux-basic-tab-title>
+        <span slot="title">Hello 2 long long long</span>
+      </gux-basic-tab-title>
     </gux-basic-tab>
     <gux-basic-tab tab-id="3">
-      <span slot="title">Hello 3</span>
+      <gux-basic-tab-title>
+        <span slot="title">Hello 3</span>
+      </gux-basic-tab-title>
     </gux-basic-tab>
     <gux-basic-tab tab-id="4">
-      <span slot="title">Hello 4</span>
+      <gux-basic-tab-title>
+        <span slot="title">Hello 4</span>
+      </gux-basic-tab-title>
     </gux-basic-tab>
     <gux-basic-tab tab-id="5">
-      <span slot="title">Hello 5</span>
+      <gux-basic-tab-title>
+        <span slot="title">Hello 5</span>
+      </gux-basic-tab-title>
     </gux-basic-tab>
     <gux-basic-tab tab-id="6">
-      <span slot="title">Hello 6</span>
+      <gux-basic-tab-title>
+        <span slot="title">Hello 6</span>
+      </gux-basic-tab-title>
     </gux-basic-tab>
     <gux-basic-tab tab-id="7">
-      <span slot="title">Hello 7</span>
+      <gux-basic-tab-title>
+        <span slot="title">Hello 7</span>
+      </gux-basic-tab-title>
     </gux-basic-tab>
     <gux-basic-tab tab-id="8">
-      <span slot="title">Hello 8</span>
+      <gux-basic-tab-title>
+        <span slot="title">Hello 8</span>
+      </gux-basic-tab-title>
     </gux-basic-tab>
     <gux-basic-tab tab-id="9">
-      <span slot="title">Hello 9</span>
+      <gux-basic-tab-title>
+        <span slot="title">Hello 9</span>
+      </gux-basic-tab-title>
     </gux-basic-tab>
     <gux-basic-tab tab-id="10">
-      <span slot="title">Hello 10</span>
+      <gux-basic-tab-title>
+        <span slot="title">Hello 10</span>
+      </gux-basic-tab-title>
     </gux-basic-tab>
   </span>
 </gux-basic-tabs>
@@ -42,37 +62,22 @@
 <gux-basic-tabs id="gux-tabs-example-2">
   <span slot="tabs">
     <gux-basic-tab tab-id="11">
-      <span slot="title">Hello 1</span>
+      <gux-basic-tab-title>
+        <span slot="title">Hello 1</span>
+      </gux-basic-tab-title>
     </gux-basic-tab>
     <gux-basic-tab tab-id="12">
-      <span slot="title">Hello 2</span>
+      <gux-basic-tab-title>
+        <span slot="title">Hello 2 long long long</span>
+      </gux-basic-tab-title>
     </gux-basic-tab>
     <gux-basic-tab tab-id="13">
-      <span slot="title">Hello 3</span>
-    </gux-basic-tab>
-    <gux-basic-tab tab-id="14">
-      <span slot="title">Hello 4</span>
-    </gux-basic-tab>
-    <gux-basic-tab tab-id="15">
-      <span slot="title">Hello 5</span>
-    </gux-basic-tab>
-    <gux-basic-tab tab-id="16">
-      <span slot="title">Hello 6</span>
-    </gux-basic-tab>
-    <gux-basic-tab tab-id="17">
-      <span slot="title">Hello 7</span>
-    </gux-basic-tab>
-    <gux-basic-tab tab-id="18">
-      <span slot="title">Hello 8</span>
-    </gux-basic-tab>
-    <gux-basic-tab tab-id="19">
-      <span slot="title">Hello 9</span>
-    </gux-basic-tab>
-    <gux-basic-tab tab-id="20">
-      <span slot="title">Hello 10</span>
+      <gux-basic-tab-title>
+        <span slot="title">Hello 3 long long long</span>
+      </gux-basic-tab-title>
     </gux-basic-tab>
   </span>
-  <span slot="tabpanel">
+  <span slot="tabContentPanel">
     <p>
       "Sed ut perspiciatis unde omnis iste natus error sit voluptatem
       accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab
@@ -92,53 +97,27 @@
   </span>
 </gux-basic-tabs>
 
-<h2>Example 3 -- just a few tabs</h2>
-
-<gux-basic-tabs id="gux-tabs-example-3">
-  <span slot="tabs">
-    <gux-basic-tab tab-id="21">
-      <span slot="title">Hello 1</span>
-    </gux-basic-tab>
-    <gux-basic-tab tab-id="22">
-      <span slot="title">Hello 2</span>
-    </gux-basic-tab>
-    <gux-basic-tab tab-id="23">
-      <span slot="title">Hello 3 long long long long long</span>
-    </gux-basic-tab>
-  </span>
-</gux-basic-tabs>
-
-<h2>Example 4 -- Vertical Alignment (Styled with purple outline for now)</h2>
-
-<gux-basic-tabs orientation="vertical" id="gux-tabs-example-4">
-  <span slot="tabs">
-    <gux-basic-tab tab-id="24">
-      <span slot="title">Hello 1</span>
-    </gux-basic-tab>
-    <gux-basic-tab tab-id="25">
-      <span slot="title">Hello 2</span>
-    </gux-basic-tab>
-    <gux-basic-tab tab-id="26">
-      <span slot="title">Hello 3 long long long long long</span>
-    </gux-basic-tab>
-  </span>
-</gux-basic-tabs>
-
 <h2>Example 5 -- only icons</h2>
 
 <gux-basic-tabs id="gux-tabs-example-5">
   <span slot="tabs">
-    <gux-basic-tab tab-id="27" icon-only="true">
-      <gux-icon slot="icon" icon-name="trashcan" decorative="true"></gux-icon>
-      <span slot="title">Trash 1 </span>
+    <gux-basic-tab tab-id="27">
+      <gux-basic-tab-icon>
+        <gux-icon icon-name="trashcan" decorative="true"></gux-icon>
+        <span slot="title">Trash 1 </span>
+      </gux-basic-tab-icon>
     </gux-basic-tab>
-    <gux-basic-tab tab-id="28" icon-only="true">
-      <gux-icon slot="icon" icon-name="trashcan" decorative="true"></gux-icon>
-      <span slot="title">Trash 2 </span>
+    <gux-basic-tab tab-id="28">
+      <gux-basic-tab-icon>
+        <gux-icon icon-name="trashcan" decorative="true"></gux-icon>
+        <span slot="title">Trash 2 </span>
+      </gux-basic-tab-icon>
     </gux-basic-tab>
-    <gux-basic-tab tab-id="29" icon-only="true">
-      <gux-icon slot="icon" icon-name="trashcan" decorative="true"></gux-icon>
-      <span slot="title">Trash 3 </span>
+    <gux-basic-tab tab-id="29">
+      <gux-basic-tab-icon>
+        <gux-icon icon-name="trashcan" decorative="true"></gux-icon>
+        <span slot="title">Trash 3 </span>
+      </gux-basic-tab-icon>
     </gux-basic-tab>
   </span>
 </gux-basic-tabs>
@@ -148,48 +127,22 @@
 <gux-basic-tabs id="gux-tabs-example-6">
   <span slot="tabs">
     <gux-basic-tab tab-id="30">
-      <gux-icon slot="icon" icon-name="trashcan" decorative="true"></gux-icon>
-      <span slot="title">Hello 1</span>
+      <gux-basic-tab-icon-title>
+        <gux-icon slot="icon" icon-name="trashcan" decorative="true"></gux-icon>
+        <span slot="title">Hello 1</span>
+      </gux-basic-tab-icon-title>
     </gux-basic-tab>
     <gux-basic-tab tab-id="31">
-      <gux-icon slot="icon" icon-name="trashcan" decorative="true"></gux-icon>
-      <span slot="title">Hello 2</span>
+      <gux-basic-tab-icon-title>
+        <gux-icon slot="icon" icon-name="trashcan" decorative="true"></gux-icon>
+        <span slot="title">Hello 2</span>
+      </gux-basic-tab-icon-title>
     </gux-basic-tab>
     <gux-basic-tab tab-id="32">
-      <gux-icon slot="icon" icon-name="trashcan" decorative="true"></gux-icon>
-      <span slot="title">Hello 3</span>
-    </gux-basic-tab>
-  </span>
-</gux-basic-tabs>
-
-<h2>Example 7 full width tabs (styled with green outline for now)</h2>
-
-<gux-basic-tabs alignment="full-width" id="gux-tabs-example-6">
-  <span slot="tabs">
-    <gux-basic-tab tab-id="33">
-      <span slot="title">Hello 1</span>
-    </gux-basic-tab>
-    <gux-basic-tab tab-id="34">
-      <span slot="title">Hello 2</span>
-    </gux-basic-tab>
-    <gux-basic-tab tab-id="35">
-      <span slot="title">Hello 3</span>
-    </gux-basic-tab>
-  </span>
-</gux-basic-tabs>
-
-<h2>Example 7 center aligned tabs (styled with blue outline for now)</h2>
-
-<gux-basic-tabs alignment="center" id="gux-tabs-example-7">
-  <span slot="tabs">
-    <gux-basic-tab tab-id="36">
-      <span slot="title">Hello 1</span>
-    </gux-basic-tab>
-    <gux-basic-tab tab-id="37">
-      <span slot="title">Hello 2</span>
-    </gux-basic-tab>
-    <gux-basic-tab tab-id="38">
-      <span slot="title">Hello 3</span>
+      <gux-basic-tab-icon-title>
+        <gux-icon slot="icon" icon-name="trashcan" decorative="true"></gux-icon>
+        <span slot="title">Hello 3 longlonglonglong</span>
+      </gux-basic-tab-icon-title>
     </gux-basic-tab>
   </span>
 </gux-basic-tabs>

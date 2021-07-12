@@ -212,6 +212,7 @@ export class GuxBasicTabs {
           >
             <gux-icon
               icon-name={
+                // will also need to add scroll up and down for vertical orientation
                 direction === 'scrollLeft' ? 'chevron-left' : 'chevron-right'
               }
               decorative={true}

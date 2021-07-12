@@ -19,16 +19,22 @@ gux-basic-tab {
     background-color: @gux-grey-90;
     border: none;
 
-    .tab-title {
-      max-width: 160px;
+    // .tab-title {
+    //   max-width: 160px;
+    //   overflow: hidden;
+    //   font-size: 14px;
+    //   text-overflow: ellipsis;
+    //   white-space: nowrap;
+    //   cursor: default;
+    //   &.gux-hidden {
+    //     display: none;
+    //   }
+    // }
+    gux-basic-tab-title,
+    gux-basic-tab-icon-title {
       overflow: hidden;
-      font-size: 14px;
       text-overflow: ellipsis;
       white-space: nowrap;
-      cursor: default;
-      &.gux-hidden {
-        display: none;
-      }
     }
 
     &:focus-visible {
