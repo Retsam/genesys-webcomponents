@@ -10,9 +10,14 @@ gux-basic-tab {
     color: @gux-type;
   }
 
+  display: flex;
+  flex-grow: 1;
+  width: 100%;
+
   .gux-basic-tab {
     display: flex;
     align-items: center;
+    width: 100%;
     max-width: 160px;
     height: 40px;
     padding: 0 @spacing-medium;
@@ -30,11 +35,13 @@ gux-basic-tab {
     //     display: none;
     //   }
     // }
-    gux-basic-tab-title,
-    gux-basic-tab-icon-title {
+    gux-title-tooltip {
+      max-width: 160px;
+      margin: auto;
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
+      cursor: default;
     }
 
     &:focus-visible {
