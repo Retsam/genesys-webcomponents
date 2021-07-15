@@ -323,10 +323,23 @@ export class GuxDatepicker {
   }
 
   updateSelection(field: HTMLInputElement, text: string): void {
-    field.value =
+    const newValue =
       field.value.substr(0, this.intervalRange.selectionStart) +
       text +
       field.value.substr(this.intervalRange.selectionEnd);
+    const newValueDate = this.stringToDate(newValue);
+
+    if (isOutOfBoundsDate(newValueDate, this.minDateDate, this.maxDateDate)) {
+      if (newValueDate < this.minDateDate) {
+        field.value = this.getFormattedValue(this.minDateDate);
+      } else {
+        field.value = this.getFormattedValue(this.maxDateDate);
+      }
+
+      return;
+    }
+
+    field.value = newValue;
   }
 
   getCalendarLabels(): string[] {
@@ -447,7 +460,7 @@ export class GuxDatepicker {
     return false;
   }
 
-  getMapAndRegexFromField(value: Date) {
+  getMapAndRegexFromDate(value: Date) {
     const map: any = {
       dd: `0${value.getDate()}`.slice(-2),
       mm: `0${value.getMonth() + 1}`.slice(-2)
@@ -467,22 +480,19 @@ export class GuxDatepicker {
   updateDate() {
     if (this.mode === CalendarModes.Range) {
       const [from, to] = fromIsoDateRange(this.value);
-      const { map: map1, regexp: regexp1 } = this.getMapAndRegexFromField(from);
-      this.formatedValue = this.format.replace(regexp1, match => {
-        return map1[match];
-      });
-      const { map: map2, regexp: regexp2 } = this.getMapAndRegexFromField(to);
-      this.toFormatedValue = this.format.replace(regexp2, match => {
-        return map2[match];
-      });
+
+      this.formatedValue = this.getFormattedValue(from);
+      this.toFormatedValue = this.getFormattedValue(to);
     } else {
       const dateValue = fromIsoDate(this.value);
-      const { map: map3, regexp: regexp3 } =
-        this.getMapAndRegexFromField(dateValue);
-      this.formatedValue = this.format.replace(regexp3, match => {
-        return map3[match];
-      });
+      this.formatedValue = this.getFormattedValue(dateValue);
     }
+  }
+
+  getFormattedValue(date: Date): string {
+    const { map, regexp } = this.getMapAndRegexFromDate(date);
+
+    return this.format.replace(regexp, match => map[match]);
   }
 
   setCursorRange() {
