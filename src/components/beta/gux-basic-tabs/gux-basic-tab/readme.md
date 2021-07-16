@@ -26,13 +26,13 @@
 
 ### Depends on
 
-- [gux-title-tooltip](../../../gux-title-tooltip)
+- [gux-tooltip-title](../../gux-tooltip-title)
 
 ### Graph
 ```mermaid
 graph TD;
-  gux-basic-tab --> gux-title-tooltip
-  gux-title-tooltip --> gux-tooltip
+  gux-basic-tab --> gux-tooltip-title
+  gux-tooltip-title --> gux-tooltip
   style gux-basic-tab fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

@@ -1,9 +1,10 @@
 import { Component, Element, h, JSX, Prop, State } from '@stencil/core';
+import { logError } from '../../../utils/error/log-error';
 
 @Component({
-  tag: 'gux-title-tooltip'
+  tag: 'gux-tooltip-title'
 })
-export class GuxBasicTab {
+export class GuxTooltipTitle {
   private titleName: string;
 
   @Element()
@@ -11,6 +12,9 @@ export class GuxBasicTab {
 
   @Prop()
   tooltip: string = '';
+
+  @Prop()
+  tabWidth: number;
 
   @State() private showTooltip: boolean = true;
 
@@ -20,13 +24,18 @@ export class GuxBasicTab {
     } else if (this.root.querySelector('[slot="title"]')) {
       this.titleName = this.root.querySelector('[slot="title"]').innerHTML;
       this.checkForTooltipHideOrShow();
+    } else {
+      logError(
+        'gux-tooltip-title',
+        'No text provided. Please provide a tooltip attribute with localized text to describe the component.'
+      );
     }
   }
 
   private checkForTooltipHideOrShow() {
     const clientWidth = this.root.clientWidth;
     // console.log(clientWidth, 'clientWidth')
-    if (clientWidth < 113) {
+    if (this.tabWidth && clientWidth < this.tabWidth) {
       this.showTooltip = false;
     }
   }

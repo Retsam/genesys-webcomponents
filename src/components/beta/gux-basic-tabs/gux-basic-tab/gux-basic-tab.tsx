@@ -35,7 +35,7 @@ export class GuxBasicTab {
   @Event()
   private internaltabactive: EventEmitter<void>;
 
-  private selectTab(e: MouseEvent): void {
+  private selectTab(): void {
     this.internaltabactive.emit();
   }
 
@@ -47,13 +47,14 @@ export class GuxBasicTab {
           'gux-active': this.active
         }}
         type="button"
-        onClick={e => this.selectTab(e)}
+        onClick={() => this.selectTab()}
         role="button"
       >
-        <gux-title-tooltip tooltip={this.tooltip}>
+        {/* need to find another way to calculate the width before text overflow */}
+        <gux-tooltip-title tooltip={this.tooltip} tabWidth={113}>
           <slot name="title" />
           <slot name="icon" />
-        </gux-title-tooltip>
+        </gux-tooltip-title>
       </button>
     ];
   }
