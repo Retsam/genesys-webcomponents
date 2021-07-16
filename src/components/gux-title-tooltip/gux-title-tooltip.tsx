@@ -5,6 +5,7 @@ import { Component, Element, h, JSX, State } from '@stencil/core';
 })
 export class GuxBasicTab {
   private titleName: string;
+  private iconOnly: boolean;
 
   @Element()
   private root: HTMLElement;
@@ -19,13 +20,13 @@ export class GuxBasicTab {
   private checkForTooltipHideOrShow() {
     const clientWidth = this.root.clientWidth;
     // console.log(clientWidth, 'clientWidth')
-    if (clientWidth < 113 && !this.root.querySelector('gux-basic-tab-icon')) {
+    if (clientWidth < 113 && !this.iconOnly) {
       this.showTooltip = false;
     }
   }
 
   render(): JSX.Element {
-    return [<slot />, this.renderTooltip()];
+    return [<slot name="icon" />, <slot name="title" />, this.renderTooltip()];
   }
 
   private renderTooltip() {
