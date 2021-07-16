@@ -41,13 +41,11 @@ If there is not enough space on the bottom, or right of the component, the toolt
 
 ### Used by
 
- - [gux-basic-tab](../../beta/gux-basic-tabs/gux-basic-tab)
  - [gux-title-tooltip](../../gux-title-tooltip)
 
 ### Graph
 ```mermaid
 graph TD;
-  gux-basic-tab --> gux-tooltip
   gux-title-tooltip --> gux-tooltip
   style gux-tooltip fill:#f9f,stroke:#333,stroke-width:4px
 ```

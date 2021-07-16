@@ -5,8 +5,7 @@ import {
   EventEmitter,
   h,
   JSX,
-  Prop,
-  State
+  Prop
 } from '@stencil/core';
 
 @Component({
@@ -14,13 +13,7 @@ import {
   tag: 'gux-basic-tab'
 })
 export class GuxBasicTab {
-  private titleName: string;
-
   @Element()
-  private root: HTMLElement;
-
-  @State() private showTooltip: boolean = true;
-
   /**
    * unique id for the tab
    */
@@ -37,26 +30,13 @@ export class GuxBasicTab {
    */
   @Prop() tabIconName: string;
 
-  @Prop() iconOnly: boolean;
+  @Prop() tooltip: string = '';
 
   @Event()
   private internaltabactive: EventEmitter<void>;
 
-  private selectTab(e): void {
-    this.internaltabactive.emit(e);
-  }
-
-  componentWillLoad() {
-    this.titleName = this.root.querySelector('[slot="title"]').innerHTML;
-    this.checkForTooltipHideOrShow();
-  }
-
-  private checkForTooltipHideOrShow() {
-    const clientWidth = this.root.clientWidth;
-    // console.log(clientWidth, 'clientWidth')
-    if (clientWidth < 113 && !this.iconOnly) {
-      this.showTooltip = false;
-    }
+  private selectTab(e: MouseEvent): void {
+    this.internaltabactive.emit();
   }
 
   render(): JSX.Element {
@@ -70,23 +50,11 @@ export class GuxBasicTab {
         onClick={e => this.selectTab(e)}
         role="button"
       >
-        <slot name="icon" />
-        <span
-          class={{
-            'tab-title': true,
-            'gux-hidden': this.iconOnly
-          }}
-        >
+        <gux-title-tooltip tooltip={this.tooltip}>
           <slot name="title" />
-        </span>
-      </button>,
-      this.renderTooltip()
+          <slot name="icon" />
+        </gux-title-tooltip>
+      </button>
     ];
-  }
-
-  private renderTooltip() {
-    if (this.showTooltip) {
-      return <gux-tooltip>{this.titleName}</gux-tooltip>;
-    }
   }
 }

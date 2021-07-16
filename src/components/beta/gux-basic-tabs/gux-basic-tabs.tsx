@@ -21,8 +21,7 @@ import tabsResources from './i18n/en.json';
 
 import {
   GuxBasicTabsOrientation,
-  GuxBasicTabsAlignment,
-  GuxBasicTabsActiveTabId
+  GuxBasicTabsAlignment
 } from './gux-basic-tabs.types';
 
 @Component({
@@ -50,12 +49,6 @@ export class GuxBasicTabs {
   alignment: GuxBasicTabsAlignment = 'left';
 
   /**
-   * Id of the active tab
-   */
-  @Prop()
-  activeTabId: GuxBasicTabsActiveTabId;
-
-  /**
    * Triggers when a tab is active.
    */
   @Event() input: EventEmitter;
@@ -71,26 +64,22 @@ export class GuxBasicTabs {
 
   private domObserver?: MutationObserver;
 
-  @Watch('activeTabId')
-  watchHandler() {
-    const tabs: HTMLGuxBasicTabElement[] = Array.from(
+  @Watch('value')
+  watchHandler(newValue: string) {
+    const tabs: HTMLGuxTabElement[] = Array.from(
       this.root.querySelectorAll('gux-basic-tab')
     );
+
     for (const tab of tabs) {
-      if (tab.tabId === this.activeTabId) {
-        tab.active = true;
-      } else {
-        tab.active = false;
-      }
+      tab.active = tab.tabId === newValue;
     }
   }
 
   @Listen('internaltabactive')
   internaltabactiveHandler(e: CustomEvent) {
     whenEventIsFrom('gux-basic-tab', e, elem => {
-      const tab = elem as HTMLGuxBasicTabElement;
+      const tab = elem as HTMLGuxTabElement;
       if (!tab.active) {
-        this.activeTabId = tab.tabId;
         this.value = tab.tabId;
         this.input.emit();
       }
@@ -160,9 +149,9 @@ export class GuxBasicTabs {
   componentDidRender() {
     setTimeout(() => {
       readTask(() => {
-        if (this.activeTabId) {
+        if (this.value) {
           const activeTab: any = this.root.querySelector(
-            `gux-basic-tab[tab-id='${this.activeTabId}']`
+            `gux-basic-tab[tab-id='${this.value}']`
           );
           if (activeTab) {
             activeTab.active = true;
@@ -170,7 +159,6 @@ export class GuxBasicTabs {
         }
       });
     }, 500);
-    this.renderTabpanelContent();
   }
 
   scrollLeft() {
@@ -200,7 +188,9 @@ export class GuxBasicTabs {
         </div>
         {this.renderScrollButton('scrollRight')}
       </div>,
-      <div class="gux-tabpanel-container"></div>
+      <div>
+        <slot name="tabContentPanel"></slot>
+      </div>
     ];
   }
 
@@ -228,31 +218,5 @@ export class GuxBasicTabs {
         ) : null}
       </div>
     );
-  }
-
-  private renderTabpanelContent(): void {
-    const tabpanelContainer = this.root.shadowRoot.querySelector(
-      '.gux-tabpanel-container'
-    );
-    if (tabpanelContainer) {
-      tabpanelContainer.innerHTML = '';
-    }
-    const tabs: HTMLGuxBasicTabElement[] = Array.from(
-      this.root.querySelectorAll('gux-basic-tab')
-    );
-
-    for (const tab of tabs) {
-      const tabpanel = tab.querySelector('[slot="tabContentPanel"]');
-      const tabClone = tabpanel.cloneNode(true);
-
-      if (tab.tabId === this.activeTabId) {
-        if (tabClone && (tabClone as HTMLElement).hasAttribute('hidden')) {
-          (tabClone as HTMLElement).removeAttribute('hidden');
-        }
-        if (tabpanelContainer) {
-          tabpanelContainer.appendChild(tabClone as HTMLElement);
-        }
-      }
-    }
   }
 }
