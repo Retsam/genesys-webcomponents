@@ -1,0 +1,40 @@
+https://www.webcomponents.org/element/HTMLElements/smart-tabs
+
+'''
+ <smart-tabs class='material'>
+    <smart-tab-item label="Tab 1" selected>
+    // Content goes here.
+    </smart-tab-item>
+    <smart-tab-item label="Tab 2">
+    // Content goes here.
+    </smart-tab-item>
+    <smart-tab-item label="Tab 3">
+	// Content goes here.
+    </smart-tab-item>
+ </smart-tabs>
+'''
+
+# Tabs or Tabbed Interface
+A set of tab elements and their associated tab panels.
+
+# Tab List
+A set of tab elements contained in a tablist element.
+
+# Tab
+An element in the tab list that serves as a label for one of the tab panels and can be activated to display that panel.
+
+# Tabpanel
+The element that contains the content associated with a tab.
+
+     <TabContext value={value}>
+        <AppBar position="static">
+          <TabList onChange={handleChange} aria-label="simple tabs example">
+            <Tab label="Item One" value="1" />
+            <Tab label="Item Two" value="2" />
+            <Tab label="Item Three" value="3" />
+          </TabList>
+        </AppBar>
+        <TabPanel value="1">Item One</TabPanel>
+        <TabPanel value="2">Item Two</TabPanel>
+        <TabPanel value="3">Item Three</TabPanel>
+      </TabContext>

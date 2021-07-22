@@ -1,0 +1,14 @@
+button {
+  &:hover,
+  &:focus {
+    background-color: red;
+  }
+
+  &[aria-selected='true'] {
+    background-color: blue;
+  }
+
+  &[aria-selected='true']:not(:focus):not(:hover) {
+    background-color: green;
+  }
+}
