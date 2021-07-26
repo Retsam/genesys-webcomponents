@@ -7,9 +7,11 @@
 
 ## Properties
 
-| Property        | Attribute         | Description | Type     | Default     |
-| --------------- | ----------------- | ----------- | -------- | ----------- |
-| `activePanelId` | `active-panel-id` |             | `string` | `undefined` |
+| Property        | Attribute         | Description | Type                                | Default        |
+| --------------- | ----------------- | ----------- | ----------------------------------- | -------------- |
+| `activePanelId` | `active-panel-id` |             | `string`                            | `undefined`    |
+| `alignment`     | `alignment`       |             | `"center" \| "fullWidth" \| "left"` | `'left'`       |
+| `orientation`   | `orientation`     |             | `"horizontal" \| "vertical"`        | `'horizontal'` |
 
 
 ## Events

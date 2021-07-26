@@ -1,14 +1,63 @@
-button {
-  &:hover,
-  &:focus {
-    background-color: red;
-  }
+@import (reference) '../../../../style/color.less';
+@import (reference) '../../../../style/spacing.less';
+@import (reference) '../../../../style/mixins.less';
 
-  &[aria-selected='true'] {
-    background-color: blue;
-  }
+gux-tab-trigger {
+  display: flex;
+  // width: 100%;
+  max-width: 160px;
 
-  &[aria-selected='true']:not(:focus):not(:hover) {
-    background-color: green;
+  gux-tooltip-title {
+    max-width: 160px;
+    margin: auto;
+    overflow: hidden;
+    font-size: 14px;
+    color: @gux-type;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    cursor: default;
+  }
+  .gux-basic-tab {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    max-width: 160px;
+    height: 40px;
+    padding: 0 @spacing-medium;
+    background-color: @gux-grey-90;
+    border: none;
+    // &:hover,
+    // &:focus {
+    //   background-color: red;
+    // }
+
+    // &[aria-selected='true'] {
+    //   background-color: blue;
+    // }
+
+    // &[aria-selected='true']:not(:focus):not(:hover) {
+    //   background-color: green;
+    // }
+    &:focus-visible {
+      outline: none;
+      .focus-ring();
+    }
+
+    &.gux-active {
+      border-bottom: 3px solid @gux-blue-60;
+    }
+
+    &:hover:not(.gux-active) {
+      border-bottom: 1px solid @gux-grey-10;
+    }
+
+    &.disabled {
+      .tab-title {
+        color: @gux-black-50;
+      }
+    }
+    [slot='icon'] {
+      padding: 0 3px;
+    }
   }
 }

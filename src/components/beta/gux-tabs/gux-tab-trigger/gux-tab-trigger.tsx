@@ -3,7 +3,6 @@ import {
   Event,
   EventEmitter,
   h,
-  Host,
   Listen,
   Method,
   Prop,
@@ -12,8 +11,7 @@ import {
 
 @Component({
   styleUrl: 'gux-tab-trigger.less',
-  tag: 'gux-tab-trigger',
-  shadow: true
+  tag: 'gux-tab-trigger'
 })
 export class GuxTabTrigger {
   private buttonElement: HTMLButtonElement;
@@ -26,6 +24,10 @@ export class GuxTabTrigger {
 
   @State()
   active: boolean = false;
+
+  @Prop() tabIconName: string;
+
+  @Prop() tooltip: string = '';
 
   @Listen('click')
   onClick() {
@@ -49,19 +51,24 @@ export class GuxTabTrigger {
 
   render() {
     return (
-      <Host>
-        <button
-          type="button"
-          id={this.triggerId}
-          role="tab"
-          aria-controls={this.panelId}
-          aria-selected={this.active.toString()}
-          tabIndex={this.active ? 0 : -1}
-          ref={el => (this.buttonElement = el)}
-        >
-          <slot></slot>
-        </button>
-      </Host>
+      <button
+        class={{
+          'gux-basic-tab': true,
+          'gux-active': this.active
+        }}
+        type="button"
+        id={this.triggerId}
+        role="tab"
+        aria-controls={this.panelId}
+        aria-selected={this.active.toString()}
+        tabIndex={this.active ? 0 : -1}
+        ref={el => (this.buttonElement = el)}
+      >
+        <gux-tooltip-title tooltip={this.tooltip} tabWidth={113}>
+          <slot name="icon" />
+          <slot name="title" />
+        </gux-tooltip-title>
+      </button>
     );
   }
 }

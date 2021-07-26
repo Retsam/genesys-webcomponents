@@ -14,6 +14,11 @@ import {
 
 import { trackComponent } from '../../../usage-tracking';
 
+import {
+  GuxBasicTabsOrientation,
+  GuxBasicTabsAlignment
+} from './gux-basic-tabs.types';
+
 @Component({
   styleUrl: 'gux-tabs.less',
   tag: 'gux-tabs-beta',
@@ -25,6 +30,12 @@ export class GuxTabsBeta {
 
   @Prop({ mutable: true })
   activePanelId: string;
+
+  @Prop()
+  orientation: GuxBasicTabsOrientation = 'horizontal';
+
+  @Prop()
+  alignment: GuxBasicTabsAlignment = 'left';
 
   @State()
   tabList: HTMLGuxTabListElement;
@@ -86,7 +97,9 @@ export class GuxTabsBeta {
 
   render(): JSX.Element {
     return (
-      <div>
+      <div
+        class={`gux-basic-tabs gux-${this.alignment} gux-${this.orientation}`}
+      >
         <slot name="tab-list"></slot>
         <div>
           <slot onSlotchange={this.onSlotchange.bind(this)}></slot>

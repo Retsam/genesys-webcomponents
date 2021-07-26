@@ -2,8 +2,7 @@ import { Component, h, JSX, Method, Prop, State } from '@stencil/core';
 
 @Component({
   styleUrl: 'gux-tab-panel.less',
-  tag: 'gux-tab-panel',
-  shadow: true
+  tag: 'gux-tab-panel'
 })
 export class GuxTabPanel {
   @Prop()
