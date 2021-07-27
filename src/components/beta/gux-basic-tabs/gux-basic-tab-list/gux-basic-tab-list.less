@@ -8,23 +8,12 @@
 gux-basic-tabs[orientation='vertical'] {
   .tab-container {
     display: flex;
-    flex-direction: column;
     width: 160px;
     max-width: 160px;
-    height: 160px;
-    color: red !important;
+    height: 100%;
     border-right: 1px solid @gux-grey-50 !important;
-    .scroll-button-container {
-      width: 100%;
-      background-color: inherit;
-      button {
-        width: 100%;
-      }
-    }
     .scrollable-section {
       flex-direction: column;
-      overflow-y: auto;
-      scroll-behavior: smooth;
     }
   }
 }
@@ -62,12 +51,15 @@ gux-basic-tabs[orientation='vertical'] {
     height: 40px;
     color: @gux-black-30;
     background-color: @gux-tabs-background;
-    // border-color: @gux-off-tab-fill;
     border: none;
 
     gux-icon {
       width: 10px;
       height: 10px;
+    }
+    &:focus {
+      border: 3px solid @gux-blue-90;
+      outline: none;
     }
 
     &:hover {

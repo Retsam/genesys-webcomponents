@@ -5,13 +5,24 @@
 gux-basic-tabs[orientation='vertical'] {
   .gux-basic-tab {
     &.gux-active {
-      border-right: 3px solid @gux-blue-60 !important;
-      border-bottom: none;
+      border-right: 3px solid @gux-blue-60;
     }
 
     &:hover:not(.gux-active) {
-      border-right: 1px solid @gux-grey-10 !important;
-      border-bottom: none;
+      border-right: 1px solid @gux-grey-10;
+    }
+  }
+}
+
+gux-basic-tabs:not([orientation='vertical']) {
+  .gux-basic-tab {
+    box-sizing: border-box;
+    &.gux-active {
+      border-bottom: 3px solid @gux-blue-60;
+    }
+
+    &:hover:not(.gux-active) {
+      border-bottom: 1px solid @gux-grey-10;
     }
   }
 }
@@ -29,7 +40,6 @@ gux-basic-tabs[alignment='full-width'] {
   gux-basic-tab-trigger {
     width: 100%;
     max-width: 100%;
-    // flex-grow: 1;
     .gux-basic-tab {
       width: 100%;
       max-width: 100%;
@@ -39,7 +49,6 @@ gux-basic-tabs[alignment='full-width'] {
 
 gux-basic-tab-trigger {
   display: flex;
-  // width: 100%;
   max-width: 160px;
 
   gux-tooltip-title {
@@ -61,29 +70,11 @@ gux-basic-tab-trigger {
     padding: 0 @spacing-medium;
     background-color: @gux-grey-90;
     border: none;
-    // &:hover,
-    // &:focus {
-    //   background-color: red;
-    // }
 
-    // &[aria-selected='true'] {
-    //   background-color: blue;
-    // }
-
-    // &[aria-selected='true']:not(:focus):not(:hover) {
-    //   background-color: green;
-    // }
     &:focus-visible {
+      border: 3px solid @gux-blue-90;
+      border-radius: 5px;
       outline: none;
-      .focus-ring();
-    }
-
-    &.gux-active {
-      border-bottom: 3px solid @gux-blue-60;
-    }
-
-    &:hover:not(.gux-active) {
-      border-bottom: 1px solid @gux-grey-10;
     }
 
     &.disabled {
