@@ -10,10 +10,10 @@ import {
 } from '@stencil/core';
 
 @Component({
-  styleUrl: 'gux-tab-trigger.less',
-  tag: 'gux-tab-trigger'
+  styleUrl: 'gux-basic-tab-trigger.less',
+  tag: 'gux-basic-tab-trigger'
 })
-export class GuxTabTrigger {
+export class GuxBasicTabTrigger {
   private buttonElement: HTMLButtonElement;
 
   @Prop()

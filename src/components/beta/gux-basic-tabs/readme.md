@@ -7,32 +7,32 @@
 
 ## Properties
 
-| Property      | Attribute     | Description             | Type                                | Default        |
-| ------------- | ------------- | ----------------------- | ----------------------------------- | -------------- |
-| `alignment`   | `alignment`   | Tab alignment           | `"center" \| "fullWidth" \| "left"` | `'left'`       |
-| `orientation` | `orientation` | Tab orientation         | `"horizontal" \| "vertical"`        | `'horizontal'` |
-| `value`       | `value`       | tabId of the active tab | `string`                            | `''`           |
+| Property        | Attribute         | Description | Type                                | Default        |
+| --------------- | ----------------- | ----------- | ----------------------------------- | -------------- |
+| `activePanelId` | `active-panel-id` |             | `string`                            | `undefined`    |
+| `alignment`     | `alignment`       |             | `"center" \| "fullWidth" \| "left"` | `'left'`       |
+| `orientation`   | `orientation`     |             | `"horizontal" \| "vertical"`        | `'horizontal'` |
 
 
 ## Events
 
-| Event   | Description                    | Type               |
-| ------- | ------------------------------ | ------------------ |
-| `input` | Triggers when a tab is active. | `CustomEvent<any>` |
+| Event                    | Description | Type                  |
+| ------------------------ | ----------- | --------------------- |
+| `guxactivepanelidchange` |             | `CustomEvent<string>` |
 
 
-## Dependencies
+## Methods
 
-### Depends on
+### `guxActivate(panelId: string) => Promise<void>`
 
-- [gux-icon](../../stable/gux-icon)
 
-### Graph
-```mermaid
-graph TD;
-  gux-basic-tabs --> gux-icon
-  style gux-basic-tabs fill:#f9f,stroke:#333,stroke-width:4px
-```
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
 
 ----------------------------------------------
 

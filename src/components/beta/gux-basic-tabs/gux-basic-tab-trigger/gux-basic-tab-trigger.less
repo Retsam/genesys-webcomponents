@@ -2,7 +2,42 @@
 @import (reference) '../../../../style/spacing.less';
 @import (reference) '../../../../style/mixins.less';
 
-gux-tab-trigger {
+gux-basic-tabs[orientation='vertical'] {
+  .gux-basic-tab {
+    &.gux-active {
+      border-right: 3px solid @gux-blue-60 !important;
+      border-bottom: none;
+    }
+
+    &:hover:not(.gux-active) {
+      border-right: 1px solid @gux-grey-10 !important;
+      border-bottom: none;
+    }
+  }
+}
+
+gux-basic-tabs[alignment='center'] {
+  .scrollable-section {
+    justify-content: center;
+  }
+}
+
+gux-basic-tabs[alignment='full-width'] {
+  .scrollable-section {
+    flex-grow: 1;
+  }
+  gux-basic-tab-trigger {
+    width: 100%;
+    max-width: 100%;
+    // flex-grow: 1;
+    .gux-basic-tab {
+      width: 100%;
+      max-width: 100%;
+    }
+  }
+}
+
+gux-basic-tab-trigger {
   display: flex;
   // width: 100%;
   max-width: 160px;

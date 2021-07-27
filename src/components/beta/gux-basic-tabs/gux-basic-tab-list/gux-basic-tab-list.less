@@ -5,6 +5,30 @@
 @gux-tabs-background: @gux-grey-60;
 @gux-off-tab-fill: @gux-grey-40;
 
+gux-basic-tabs[orientation='vertical'] {
+  .tab-container {
+    display: flex;
+    flex-direction: column;
+    width: 160px;
+    max-width: 160px;
+    height: 160px;
+    color: red !important;
+    border-right: 1px solid @gux-grey-50 !important;
+    .scroll-button-container {
+      width: 100%;
+      background-color: inherit;
+      button {
+        width: 100%;
+      }
+    }
+    .scrollable-section {
+      flex-direction: column;
+      overflow-y: auto;
+      scroll-behavior: smooth;
+    }
+  }
+}
+
 .tab-container {
   display: flex;
   width: 100%;

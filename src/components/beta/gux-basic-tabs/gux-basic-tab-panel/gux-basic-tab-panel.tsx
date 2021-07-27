@@ -1,10 +1,10 @@
 import { Component, h, JSX, Method, Prop, State } from '@stencil/core';
 
 @Component({
-  styleUrl: 'gux-tab-panel.less',
-  tag: 'gux-tab-panel'
+  styleUrl: 'gux-basic-tab-panel.less',
+  tag: 'gux-basic-tab-panel'
 })
-export class GuxTabPanel {
+export class GuxBasicTabPanel {
   @Prop()
   triggerId: string;
 

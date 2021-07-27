@@ -10,11 +10,16 @@ import {
   writeTask
 } from '@stencil/core';
 
+import { OnMutation } from '../../../../utils/decorator/on-mutation';
+// import { getRootIconName } from '../../../stable/gux-icon/gux-icon.service';
+
 @Component({
-  styleUrl: 'gux-tab-list.less',
-  tag: 'gux-tab-list'
+  styleUrl: 'gux-basic-tab-list.less',
+  tag: 'gux-basic-tab-list'
 })
-export class GuxTabList {
+export class GuxBasicTabList {
+  private triggerIds: string;
+
   @Element()
   root: HTMLElement;
 
@@ -27,9 +32,22 @@ export class GuxTabList {
   @State()
   private hasScrollbar: boolean = false;
 
+  private hasVerticalScrollbar: boolean = false;
+
   private resizeObserver?: ResizeObserver;
 
+  // private resizeObserverVertical?: ResizeObserver;
+
   private domObserver?: MutationObserver;
+
+  @OnMutation({ childList: true, subtree: true })
+  onMutation(): void {
+    this.triggerIds = Array.from(
+      this.root.querySelector('.scrollable-section').children
+    )
+      .map(trigger => trigger.getAttribute('trigger-id'))
+      .join(' ');
+  }
 
   @Listen('keyup')
   onKeyup(event: KeyboardEvent): void {
@@ -77,19 +95,24 @@ export class GuxTabList {
     this.tabTriggers[this.focused].guxFocus();
   }
 
-  private onSlotchange(): void {
-    this.tabTriggers = this.root.shadowRoot
-      .querySelector('slot')
-      .assignedElements() as HTMLGuxTabTriggerElement[];
-  }
+  // private onSlotchange(): void {
+  //   this.tabTriggers = this.root.shadowRoot
+  //     .querySelector('slot')
+  //     .assignedElements() as HTMLGuxTabTriggerElement[];
+  // }
 
   checkForScrollbarHideOrShow() {
     readTask(() => {
       const el = this.root.querySelector('.scrollable-section');
       const hasScrollbar = el.clientWidth !== el.scrollWidth;
+      const hasVerticalScrollbar = el.clientHeight !== el.scrollHeight;
 
       if (hasScrollbar !== this.hasScrollbar) {
         this.hasScrollbar = hasScrollbar;
+      }
+
+      if (hasVerticalScrollbar !== this.hasVerticalScrollbar) {
+        this.hasVerticalScrollbar = hasVerticalScrollbar;
       }
     });
   }
@@ -101,14 +124,7 @@ export class GuxTabList {
       );
     }
 
-    if (!this.resizeObserver && window.ResizeObserver) {
-      this.resizeObserver = new ResizeObserver(
-        this.checkForScrollbarHideOrShow.bind(this)
-      );
-    }
-
-    this.tabTriggers = this.root.querySelectorAll('gux-tab-trigger');
-    // .assignedElements() as HTMLGuxTabTriggerElement[];
+    this.tabTriggers = this.root.querySelectorAll('gux-basic-tab-trigger');
 
     if (this.resizeObserver) {
       this.resizeObserver.observe(this.root.querySelector('.tab-container'));
@@ -145,15 +161,35 @@ export class GuxTabList {
     });
   }
 
+  scrollUp() {
+    writeTask(() => {
+      this.root.querySelector('.scrollable-section').scrollBy(0, -100);
+    });
+  }
+
+  scrollDown() {
+    writeTask(() => {
+      this.root.querySelector('.scrollable-section').scrollBy(0, 100);
+    });
+  }
+
   render(): JSX.Element {
     return (
       <div class="tab-container">
-        {this.renderScrollButton('scrollLeft')}
+        {this.hasScrollbar
+          ? this.renderScrollButton('scrollLeft')
+          : this.renderScrollButton('scrollUp')}
 
-        <div role="tablist" class="scrollable-section">
-          <slot onSlotchange={this.onSlotchange.bind(this)}></slot>
+        <div
+          role="tablist"
+          class="scrollable-section"
+          aria-owns={this.triggerIds}
+        >
+          <slot></slot>
         </div>
-        {this.renderScrollButton('scrollRight')}
+        {this.hasScrollbar
+          ? this.renderScrollButton('scrollRight')
+          : this.renderScrollButton('scrollDown')}
       </div>
     );
   }
@@ -161,26 +197,48 @@ export class GuxTabList {
   private renderScrollButton(direction: string): JSX.Element {
     return (
       <div class="scroll-button-container">
-        {this.hasScrollbar ? (
+        {this.hasScrollbar || this.hasVerticalScrollbar ? (
           <button
             // title={this.i18n(direction)}
             class="scroll-button"
-            onClick={() =>
-              direction === 'scrollLeft'
-                ? this.scrollLeft()
-                : this.scrollRight()
-            }
+            onClick={() => this.getScrollDirection(direction)}
           >
             <gux-icon
-              icon-name={
-                // will also need to add scroll up and down for vertical orientation
-                direction === 'scrollLeft' ? 'chevron-left' : 'chevron-right'
-              }
+              icon-name={this.getChevronIconName(direction)}
               decorative={true}
             />
           </button>
         ) : null}
       </div>
     );
+  }
+
+  private getScrollDirection(direction: string): void {
+    switch (direction) {
+      case 'scrollLeft':
+        this.scrollLeft();
+        break;
+      case 'scrollRight':
+        this.scrollRight();
+        break;
+      case 'scrollUp':
+        this.scrollUp();
+        break;
+      case 'scrollDown':
+        this.scrollDown();
+    }
+  }
+
+  private getChevronIconName(direction: string): string {
+    switch (direction) {
+      case 'scrollLeft':
+        return 'chevron-left';
+      case 'scrollRight':
+        return 'chevron-right';
+      case 'scrollUp':
+        return 'chevron-up';
+      case 'scrollDown':
+        return 'chevron-down';
+    }
   }
 }

@@ -17,8 +17,7 @@
 
 ### Used by
 
- - [gux-basic-tab](../gux-basic-tabs/gux-basic-tab)
- - [gux-tab-trigger](../gux-tabs/gux-tab-trigger)
+ - [gux-basic-tab-trigger](../gux-basic-tabs/gux-basic-tab-trigger)
 
 ### Depends on
 
@@ -28,8 +27,7 @@
 ```mermaid
 graph TD;
   gux-tooltip-title --> gux-tooltip
-  gux-basic-tab --> gux-tooltip-title
-  gux-tab-trigger --> gux-tooltip-title
+  gux-basic-tab-trigger --> gux-tooltip-title
   style gux-tooltip-title fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

@@ -54,9 +54,9 @@ Type: `Promise<void>`
 ### Graph
 ```mermaid
 graph TD;
-  gux-tab-trigger --> gux-tooltip-title
+  gux-basic-tab-trigger --> gux-tooltip-title
   gux-tooltip-title --> gux-tooltip
-  style gux-tab-trigger fill:#f9f,stroke:#333,stroke-width:4px
+  style gux-basic-tab-trigger fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
 ----------------------------------------------

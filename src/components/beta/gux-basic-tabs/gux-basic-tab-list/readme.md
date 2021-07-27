@@ -27,8 +27,8 @@ Type: `Promise<void>`
 ### Graph
 ```mermaid
 graph TD;
-  gux-tab-list --> gux-icon
-  style gux-tab-list fill:#f9f,stroke:#333,stroke-width:4px
+  gux-basic-tab-list --> gux-icon
+  style gux-basic-tab-list fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
 ----------------------------------------------
