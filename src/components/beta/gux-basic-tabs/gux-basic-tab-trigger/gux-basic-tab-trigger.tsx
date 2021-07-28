@@ -25,13 +25,13 @@ export class GuxBasicTabTrigger {
   @State()
   active: boolean = false;
 
-  @Prop() tabIconName: string;
+  @Prop() guxDisabled: boolean = false;
 
   @Prop() tooltip: string = '';
 
   @Listen('click')
   onClick() {
-    if (!this.active) {
+    if (!this.active && !this.guxDisabled) {
       this.internalactivatetabpanel.emit(this.panelId);
     }
   }
@@ -53,10 +53,12 @@ export class GuxBasicTabTrigger {
     return (
       <button
         class={{
+          'gux-disabled': this.guxDisabled,
           'gux-basic-tab': true,
           'gux-active': this.active
         }}
         type="button"
+        disabled={this.guxDisabled}
         id={this.triggerId}
         role="tab"
         aria-controls={this.panelId}

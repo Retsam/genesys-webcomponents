@@ -11,15 +11,16 @@ import {
 } from '@stencil/core';
 
 import { OnMutation } from '../../../../utils/decorator/on-mutation';
-// import { buildI18nForComponent, GetI18nValue } from '../../../../i18n';
+import { buildI18nForComponent, GetI18nValue } from '../../../../i18n';
 
-// import tabsResources from '../i18n/en.json';
+import tabsResources from '../i18n/en.json';
 
 @Component({
   styleUrl: 'gux-basic-tab-list.less',
   tag: 'gux-basic-tab-list'
 })
 export class GuxBasicTabList {
+  private i18n: GetI18nValue;
   private triggerIds: string;
 
   @Element()
@@ -32,8 +33,6 @@ export class GuxBasicTabList {
   tabTriggers: any;
 
   @State()
-
-  // private i18n: GetI18nValue;
   private hasScrollbar: boolean = false;
 
   private resizeObserver?: ResizeObserver;
@@ -99,7 +98,6 @@ export class GuxBasicTabList {
     readTask(() => {
       const el = this.root.querySelector('.scrollable-section');
       const hasScrollbar = el.clientWidth !== el.scrollWidth;
-
       if (hasScrollbar !== this.hasScrollbar) {
         this.hasScrollbar = hasScrollbar;
       }
@@ -117,8 +115,8 @@ export class GuxBasicTabList {
   }
 
   async componentWillLoad(): Promise<void> {
-    // this.i18n = await buildI18nForComponent(this.root, tabsResources);
     this.tabTriggers = this.root.querySelectorAll('gux-basic-tab-trigger');
+    this.i18n = await buildI18nForComponent(this.root, tabsResources);
   }
 
   componentDidLoad() {
@@ -189,8 +187,8 @@ export class GuxBasicTabList {
       <div class="scroll-button-container">
         {this.hasScrollbar ? (
           <button
-            // title={this.i18n(direction)}
-            // aria-label={this.i18n(direction)}
+            title={this.i18n(direction)}
+            aria-label={this.i18n(direction)}
             class="scroll-button"
             onClick={() =>
               direction === 'scrollLeft'

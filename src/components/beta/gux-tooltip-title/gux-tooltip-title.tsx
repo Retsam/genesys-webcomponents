@@ -34,7 +34,6 @@ export class GuxTooltipTitle {
 
   private checkForTooltipHideOrShow() {
     const clientWidth = this.root.clientWidth;
-    // console.log(clientWidth, 'clientWidth')
     if (this.tabWidth && clientWidth < this.tabWidth) {
       this.showTooltip = false;
     }

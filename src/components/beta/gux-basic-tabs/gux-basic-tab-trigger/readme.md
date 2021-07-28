@@ -7,12 +7,12 @@
 
 ## Properties
 
-| Property      | Attribute       | Description | Type     | Default     |
-| ------------- | --------------- | ----------- | -------- | ----------- |
-| `panelId`     | `panel-id`      |             | `string` | `undefined` |
-| `tabIconName` | `tab-icon-name` |             | `string` | `undefined` |
-| `tooltip`     | `tooltip`       |             | `string` | `''`        |
-| `triggerId`   | `trigger-id`    |             | `string` | `undefined` |
+| Property      | Attribute      | Description | Type      | Default     |
+| ------------- | -------------- | ----------- | --------- | ----------- |
+| `guxDisabled` | `gux-disabled` |             | `boolean` | `false`     |
+| `panelId`     | `panel-id`     |             | `string`  | `undefined` |
+| `tooltip`     | `tooltip`      |             | `string`  | `''`        |
+| `triggerId`   | `trigger-id`   |             | `string`  | `undefined` |
 
 
 ## Events
