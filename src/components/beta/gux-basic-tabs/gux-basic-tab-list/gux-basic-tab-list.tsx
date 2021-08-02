@@ -42,7 +42,7 @@ export class GuxBasicTabList {
   @OnMutation({ childList: true, subtree: true })
   onMutation(): void {
     this.triggerIds = Array.from(
-      this.root.querySelector('.scrollable-section').children
+      this.root.querySelector('.gux-scrollable-section').children
     )
       .map(trigger => trigger.getAttribute('trigger-id'))
       .join(' ');
@@ -96,7 +96,7 @@ export class GuxBasicTabList {
 
   checkForScrollbarHideOrShow() {
     readTask(() => {
-      const el = this.root.querySelector('.scrollable-section');
+      const el = this.root.querySelector('.gux-scrollable-section');
       const hasScrollbar = el.clientWidth !== el.scrollWidth;
       if (hasScrollbar !== this.hasScrollbar) {
         this.hasScrollbar = hasScrollbar;
@@ -106,7 +106,9 @@ export class GuxBasicTabList {
 
   disconnectedCallback() {
     if (this.resizeObserver) {
-      this.resizeObserver.unobserve(this.root.querySelector('.tab-container'));
+      this.resizeObserver.unobserve(
+        this.root.querySelector('.gux-tab-container')
+      );
     }
 
     if (this.domObserver) {
@@ -127,7 +129,9 @@ export class GuxBasicTabList {
     }
 
     if (this.resizeObserver) {
-      this.resizeObserver.observe(this.root.querySelector('.tab-container'));
+      this.resizeObserver.observe(
+        this.root.querySelector('.gux-tab-container')
+      );
     }
 
     if (!this.domObserver && window.MutationObserver) {
@@ -151,26 +155,26 @@ export class GuxBasicTabList {
 
   scrollLeft() {
     writeTask(() => {
-      this.root.querySelector('.scrollable-section').scrollBy(-100, 0);
+      this.root.querySelector('.gux-scrollable-section').scrollBy(-100, 0);
     });
   }
 
   scrollRight() {
     writeTask(() => {
-      this.root.querySelector('.scrollable-section').scrollBy(100, 0);
+      this.root.querySelector('.gux-scrollable-section').scrollBy(100, 0);
     });
   }
 
   render(): JSX.Element {
     return (
-      <div class="tab-container">
+      <div class="gux-tab-container">
         {this.hasScrollbar
           ? this.renderScrollButton('scrollLeft')
           : this.renderScrollButton('scrollUp')}
 
         <div
           role="tablist"
-          class="scrollable-section"
+          class="gux-scrollable-section"
           aria-owns={this.triggerIds}
         >
           <slot></slot>
@@ -184,12 +188,12 @@ export class GuxBasicTabList {
 
   private renderScrollButton(direction: string): JSX.Element {
     return (
-      <div class="scroll-button-container">
+      <div class="gux-scroll-button-container">
         {this.hasScrollbar ? (
           <button
             title={this.i18n(direction)}
             aria-label={this.i18n(direction)}
-            class="scroll-button"
+            class="gux-scroll-button"
             onClick={() =>
               direction === 'scrollLeft'
                 ? this.scrollLeft()

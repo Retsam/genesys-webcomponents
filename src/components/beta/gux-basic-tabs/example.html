@@ -1,8 +1,8 @@
-<h1>gux-basic-tabs</h1>
+<h1>gux-basic-tabs-beta</h1>
 
 <h2>Example 1 -- tabs left alignment scroll</h2>
 
-<gux-basic-tabs class="example" active-panel-id="p1-2">
+<gux-basic-tabs-beta class="example" active-panel-id="p1-2">
   <gux-basic-tab-list slot="tab-list">
     <gux-basic-tab-trigger trigger-id="t1-1" panel-id="p1-1"
       ><span slot="title">Tab Header 1</span></gux-basic-tab-trigger
@@ -65,11 +65,11 @@
   <gux-basic-tab-panel panel-id="p1-10" trigger-id="t1-10"
     >Tab content 10</gux-basic-tab-panel
   >
-</gux-basic-tabs>
+</gux-basic-tabs-beta>
 
 <h2>Example 2 -- tabs left alignment</h2>
 
-<gux-basic-tabs class="example">
+<gux-basic-tabs-beta class="example">
   <gux-basic-tab-list slot="tab-list">
     <gux-basic-tab-trigger trigger-id="t2-1" panel-id="p2-1"
       ><span slot="title">Tab Header 1</span></gux-basic-tab-trigger
@@ -104,11 +104,11 @@
   <gux-basic-tab-panel panel-id="p2-5" trigger-id="t2-5"
     >Tab content 5</gux-basic-tab-panel
   >
-</gux-basic-tabs>
+</gux-basic-tabs-beta>
 
 <h2>Example 3 -- tabs vertical alignment</h2>
 
-<gux-basic-tabs orientation="vertical" class="example">
+<gux-basic-tabs-beta orientation="vertical" class="example">
   <gux-basic-tab-list slot="tab-list">
     <gux-basic-tab-trigger trigger-id="t3-1" panel-id="p3-1"
       ><span slot="title">Tab Header 1</span></gux-basic-tab-trigger
@@ -143,41 +143,34 @@
   <gux-basic-tab-panel panel-id="p3-5" trigger-id="t3-5"
     >Tab content 5</gux-basic-tab-panel
   >
-</gux-basic-tabs>
+</gux-basic-tabs-beta>
 
 <h2>Example 4 -- tabs icons only</h2>
 
-<gux-basic-tabs class="example">
+<gux-basic-tabs-beta class="example">
   <gux-basic-tab-list slot="tab-list">
-    <gux-basic-tab-trigger trigger-id="t4-1" panel-id="p4-1" tooltip="Agent">
+    <gux-basic-tab-trigger trigger-id="t4-1" panel-id="p4-1" icon-only="true">
+      <span slot="title">Agent</span>
       <gux-icon slot="icon" icon-name="agent" decorative="true"></gux-icon
     ></gux-basic-tab-trigger>
-    <gux-basic-tab-trigger
-      trigger-id="t4-2"
-      panel-id="p4-2"
-      tooltip="User Directory"
-    >
+    <gux-basic-tab-trigger trigger-id="t4-2" panel-id="p4-2" icon-only="true">
+      <span name="title">User Directory</span>
       <gux-icon
         slot="icon"
         icon-name="user-directory"
         decorative="true"
       ></gux-icon
     ></gux-basic-tab-trigger>
-    <gux-basic-tab-trigger
-      trigger-id="t4-3"
-      panel-id="p4-3"
-      tooltip="Co-browse"
-    >
+    <gux-basic-tab-trigger trigger-id="t4-3" panel-id="p4-3" icon-only="true">
+      <span slot="title">Co-browse</span>
       <gux-icon slot="icon" icon-name="cobrowse" decorative="true"></gux-icon
     ></gux-basic-tab-trigger>
-    <gux-basic-tab-trigger
-      trigger-id="t4-4"
-      panel-id="p4-4"
-      tooltip="User Group"
-    >
+    <gux-basic-tab-trigger trigger-id="t4-4" panel-id="p4-4" icon-only="true">
+      <span slot="title">User Group</span>
       <gux-icon slot="icon" icon-name="user-group" decorative="true"></gux-icon
     ></gux-basic-tab-trigger>
-    <gux-basic-tab-trigger trigger-id="t4-5" panel-id="p4-5" tooltip="Trash">
+    <gux-basic-tab-trigger trigger-id="t4-5" panel-id="p4-5" icon-only="true">
+      <span slot="title">Trash</span>
       <gux-icon slot="icon" icon-name="trashcan" decorative="true"></gux-icon>
     </gux-basic-tab-trigger>
   </gux-basic-tab-list>
@@ -196,11 +189,11 @@
   <gux-basic-tab-panel panel-id="p4-5" trigger-id="t4-5"
     >Tab content 5</gux-basic-tab-panel
   >
-</gux-basic-tabs>
+</gux-basic-tabs-beta>
 
 <h2>Example 5 -- tabs icons and title</h2>
 
-<gux-basic-tabs class="example">
+<gux-basic-tabs-beta class="example">
   <gux-basic-tab-list slot="tab-list">
     <gux-basic-tab-trigger trigger-id="t5-1" panel-id="p5-1">
       <gux-icon slot="icon" icon-name="agent" decorative="true"></gux-icon>
@@ -242,11 +235,11 @@
   <gux-basic-tab-panel panel-id="p5-5" trigger-id="t5-5"
     >Tab content 5</gux-basic-tab-panel
   >
-</gux-basic-tabs>
+</gux-basic-tabs-beta>
 
 <h2>Example 6 -- tabs full width</h2>
 
-<gux-basic-tabs alignment="full-width" class="example">
+<gux-basic-tabs-beta alignment="full-width" class="example">
   <gux-basic-tab-list slot="tab-list">
     <gux-basic-tab-trigger trigger-id="t6-1" panel-id="p6-1"
       ><span slot="title">Tab Header 1</span></gux-basic-tab-trigger
@@ -279,11 +272,11 @@
   <gux-basic-tab-panel panel-id="p6-5" trigger-id="t6-5"
     >Tab content 5</gux-basic-tab-panel
   >
-</gux-basic-tabs>
+</gux-basic-tabs-beta>
 
 <h2>Example 7 -- tabs center aligned</h2>
 
-<gux-basic-tabs alignment="center" class="example">
+<gux-basic-tabs-beta alignment="center" class="example">
   <gux-basic-tab-list slot="tab-list">
     <gux-basic-tab-trigger trigger-id="t7-1" panel-id="p7-1"
       ><span slot="title">Tab Header 1</span></gux-basic-tab-trigger
@@ -316,7 +309,7 @@
   <gux-basic-tab-panel panel-id="p7-5" trigger-id="t7-5"
     >Tab content 5</gux-basic-tab-panel
   >
-</gux-basic-tabs>
+</gux-basic-tabs-beta>
 
 <style
   onload="(function () {

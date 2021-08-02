@@ -2,7 +2,7 @@
 @import (reference) '../../../../style/spacing.less';
 @import (reference) '../../../../style/mixins.less';
 
-gux-basic-tabs[orientation='vertical'] {
+gux-basic-tabs-beta[orientation='vertical'] {
   .gux-basic-tab {
     &.gux-active {
       border-right: 2px solid @gux-blue-60;
@@ -14,7 +14,7 @@ gux-basic-tabs[orientation='vertical'] {
   }
 }
 
-gux-basic-tabs:not([orientation='vertical']) {
+gux-basic-tabs-beta:not([orientation='vertical']) {
   .gux-basic-tab {
     box-sizing: border-box;
     &.gux-active {
@@ -27,14 +27,14 @@ gux-basic-tabs:not([orientation='vertical']) {
   }
 }
 
-gux-basic-tabs[alignment='center'] {
-  .scrollable-section {
+gux-basic-tabs-beta[alignment='center'] {
+  .gux-scrollable-section {
     justify-content: center;
   }
 }
 
-gux-basic-tabs[alignment='full-width'] {
-  .scrollable-section {
+gux-basic-tabs-beta[alignment='full-width'] {
+  .gux-scrollable-section {
     flex-grow: 1;
   }
   gux-basic-tab-trigger {

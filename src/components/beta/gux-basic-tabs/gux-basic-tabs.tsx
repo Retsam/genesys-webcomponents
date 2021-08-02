@@ -22,7 +22,7 @@ import {
 
 @Component({
   styleUrl: 'gux-basic-tabs.less',
-  tag: 'gux-basic-tabs',
+  tag: 'gux-basic-tabs-beta',
   shadow: true
 })
 export class GuxTabsBeta {

@@ -5,33 +5,33 @@
 @gux-tabs-background: @gux-grey-60;
 @gux-off-tab-fill: @gux-grey-40;
 
-gux-basic-tabs[orientation='vertical'] {
-  .tab-container {
+gux-basic-tabs-beta[orientation='vertical'] {
+  .gux-tab-container {
     display: flex;
     width: 160px;
     max-width: 160px;
     height: 100%;
     border-right: 1px solid @gux-grey-50;
-    .scrollable-section {
+    .gux-scrollable-section {
       flex-direction: column;
     }
   }
 }
 
-gux-basic-tabs:not([orientation='vertical']) {
-  .tab-container {
+gux-basic-tabs-beta:not([orientation='vertical']) {
+  .gux-tab-container {
     border-bottom: 1px solid @gux-grey-50;
   }
 }
 
-.tab-container {
+.gux-tab-container {
   display: flex;
   width: 100%;
   height: 40px;
   overflow-x: hidden;
   background-color: #fff;
 }
-.scrollable-section {
+.gux-scrollable-section {
   display: flex;
   flex: 1 1 auto;
   overflow-x: auto;
@@ -43,12 +43,12 @@ gux-basic-tabs:not([orientation='vertical']) {
   }
 }
 
-.scroll-button-container {
+.gux-scroll-button-container {
   display: flex;
   background-color: @gux-off-tab-fill;
   border-radius: 4px;
 
-  .scroll-button {
+  .gux-scroll-button {
     display: flex;
     align-items: center;
     justify-content: center;

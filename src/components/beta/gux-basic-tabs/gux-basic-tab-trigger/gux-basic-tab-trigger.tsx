@@ -27,7 +27,7 @@ export class GuxBasicTabTrigger {
 
   @Prop() guxDisabled: boolean = false;
 
-  @Prop() tooltip: string = '';
+  @Prop() iconOnly: boolean = false;
 
   @Listen('click')
   onClick() {
@@ -66,7 +66,7 @@ export class GuxBasicTabTrigger {
         tabIndex={this.active ? 0 : -1}
         ref={el => (this.buttonElement = el)}
       >
-        <gux-tooltip-title tooltip={this.tooltip} tabWidth={113}>
+        <gux-tooltip-title icon-only={this.iconOnly} tab-width={113}>
           <slot name="icon" />
           <slot name="title" />
         </gux-tooltip-title>

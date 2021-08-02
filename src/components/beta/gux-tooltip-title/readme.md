@@ -7,10 +7,10 @@
 
 ## Properties
 
-| Property   | Attribute   | Description | Type     | Default     |
-| ---------- | ----------- | ----------- | -------- | ----------- |
-| `tabWidth` | `tab-width` |             | `number` | `undefined` |
-| `tooltip`  | `tooltip`   |             | `string` | `''`        |
+| Property   | Attribute   | Description | Type      | Default     |
+| ---------- | ----------- | ----------- | --------- | ----------- |
+| `iconOnly` | `icon-only` |             | `boolean` | `false`     |
+| `tabWidth` | `tab-width` |             | `number`  | `undefined` |
 
 
 ## Dependencies

@@ -10,8 +10,8 @@
 | Property      | Attribute      | Description | Type      | Default     |
 | ------------- | -------------- | ----------- | --------- | ----------- |
 | `guxDisabled` | `gux-disabled` |             | `boolean` | `false`     |
+| `iconOnly`    | `icon-only`    |             | `boolean` | `false`     |
 | `panelId`     | `panel-id`     |             | `string`  | `undefined` |
-| `tooltip`     | `tooltip`      |             | `string`  | `''`        |
 | `triggerId`   | `trigger-id`   |             | `string`  | `undefined` |
 
 
