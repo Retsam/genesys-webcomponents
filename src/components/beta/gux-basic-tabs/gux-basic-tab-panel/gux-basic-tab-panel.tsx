@@ -1,4 +1,14 @@
-import { Component, h, JSX, Method, Prop, State } from '@stencil/core';
+import {
+  Component,
+  Event,
+  EventEmitter,
+  h,
+  JSX,
+  Method,
+  Prop,
+  State,
+  Watch
+} from '@stencil/core';
 
 @Component({
   styleUrl: 'gux-basic-tab-panel.less',
@@ -14,6 +24,16 @@ export class GuxBasicTabPanel {
   @Method()
   async guxSetActive(active: boolean): Promise<void> {
     this.active = active;
+  }
+
+  @Event()
+  guxactivepanelchange: EventEmitter<string>;
+
+  @Watch('active')
+  watchActivePanel() {
+    if (this.active === true) {
+      this.guxactivepanelchange.emit(this.name);
+    }
   }
 
   render(): JSX.Element {
