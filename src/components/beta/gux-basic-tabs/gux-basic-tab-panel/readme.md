@@ -7,10 +7,9 @@
 
 ## Properties
 
-| Property    | Attribute    | Description | Type     | Default     |
-| ----------- | ------------ | ----------- | -------- | ----------- |
-| `panelId`   | `panel-id`   |             | `string` | `undefined` |
-| `triggerId` | `trigger-id` |             | `string` | `undefined` |
+| Property | Attribute | Description | Type     | Default     |
+| -------- | --------- | ----------- | -------- | ----------- |
+| `name`   | `name`    |             | `string` | `undefined` |
 
 
 ## Methods

@@ -6,13 +6,10 @@ import { logError } from '../../../utils/error/log-error';
   tag: 'gux-tooltip-title'
 })
 export class GuxTooltipTitle {
-  private titleName: string;
+  private titleName: string = '';
 
   @Element()
   private root: HTMLElement;
-
-  @Prop()
-  iconOnly: boolean = false;
 
   @Prop()
   tabWidth: number;
@@ -20,23 +17,35 @@ export class GuxTooltipTitle {
   @State() private showTooltip: boolean = true;
 
   componentWillLoad() {
-    if (this.root.querySelector('[slot="title"]')) {
-      this.titleName = this.root.querySelector('[slot="title"]').innerHTML;
-      this.checkForTooltipHideOrShow();
+    if (
+      this.root.querySelector('gux-icon') &&
+      this.root.children.length === 1
+    ) {
+      if (
+        this.root.querySelector('gux-icon').hasAttribute('screenreader-text')
+      ) {
+        this.titleName = this.root
+          .querySelector('gux-icon')
+          .getAttribute('screenreader-text');
+      } else {
+        logError(
+          'gux-tooltip-title',
+          'No screenreader-text provided. Provide a localized screenreader-text property for the gux-icon. The screenreader-text property is used for the icon screenreader text and the tooltip.'
+        );
+      }
     } else {
-      logError(
-        'gux-tooltip-title',
-        'No text provided. Please provide a title for the component.'
-      );
+      const children = Array.from(this.root.children);
+      children.map(element => {
+        if (element.tagName !== 'GUX-ICON') {
+          this.titleName += element.innerHTML;
+        }
+      });
+      this.checkForTooltipHideOrShow();
     }
   }
 
   private checkForTooltipHideOrShow() {
     const clientWidth = this.root.clientWidth;
-    if (this.iconOnly) {
-      this.showTooltip = true;
-      return;
-    }
     if (this.tabWidth && clientWidth < this.tabWidth) {
       this.showTooltip = false;
       return;
@@ -45,9 +54,8 @@ export class GuxTooltipTitle {
 
   render(): JSX.Element {
     return [
-      <slot name="icon" />,
-      <span class={{ 'gux-hidden': this.iconOnly }}>
-        <slot name="title" />
+      <span>
+        <slot />
       </span>,
       this.renderTooltip()
     ];

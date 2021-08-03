@@ -6,10 +6,7 @@ import { Component, h, JSX, Method, Prop, State } from '@stencil/core';
 })
 export class GuxBasicTabPanel {
   @Prop()
-  triggerId: string;
-
-  @Prop()
-  panelId: string;
+  name: string;
 
   @State()
   active: boolean = false;
@@ -22,9 +19,9 @@ export class GuxBasicTabPanel {
   render(): JSX.Element {
     return (
       <div
-        id={this.panelId}
+        id={`${this.name}-panel`}
         role="tabpanel"
-        aria-labelledby={this.triggerId}
+        aria-labelledby={`${this.name}-tab`}
         tabIndex={0}
         hidden={!this.active}
       >

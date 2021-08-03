@@ -7,23 +7,23 @@
 
 ## Properties
 
-| Property        | Attribute         | Description | Type                                | Default        |
-| --------------- | ----------------- | ----------- | ----------------------------------- | -------------- |
-| `activePanelId` | `active-panel-id` |             | `string`                            | `undefined`    |
-| `alignment`     | `alignment`       |             | `"center" \| "fullWidth" \| "left"` | `'left'`       |
-| `orientation`   | `orientation`     |             | `"horizontal" \| "vertical"`        | `'horizontal'` |
+| Property      | Attribute     | Description | Type                                | Default        |
+| ------------- | ------------- | ----------- | ----------------------------------- | -------------- |
+| `activeTab`   | `active-tab`  |             | `string`                            | `undefined`    |
+| `alignment`   | `alignment`   |             | `"center" \| "fullWidth" \| "left"` | `'left'`       |
+| `orientation` | `orientation` |             | `"horizontal" \| "vertical"`        | `'horizontal'` |
 
 
 ## Events
 
-| Event                    | Description | Type                  |
-| ------------------------ | ----------- | --------------------- |
-| `guxactivepanelidchange` |             | `CustomEvent<string>` |
+| Event                | Description | Type                  |
+| -------------------- | ----------- | --------------------- |
+| `guxactivetabchange` |             | `CustomEvent<string>` |
 
 
 ## Methods
 
-### `guxActivate(panelId: string) => Promise<void>`
+### `guxActivate(name: string) => Promise<void>`
 
 
 

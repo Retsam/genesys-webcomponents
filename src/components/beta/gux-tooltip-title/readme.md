@@ -7,17 +7,16 @@
 
 ## Properties
 
-| Property   | Attribute   | Description | Type      | Default     |
-| ---------- | ----------- | ----------- | --------- | ----------- |
-| `iconOnly` | `icon-only` |             | `boolean` | `false`     |
-| `tabWidth` | `tab-width` |             | `number`  | `undefined` |
+| Property   | Attribute   | Description | Type     | Default     |
+| ---------- | ----------- | ----------- | -------- | ----------- |
+| `tabWidth` | `tab-width` |             | `number` | `undefined` |
 
 
 ## Dependencies
 
 ### Used by
 
- - [gux-basic-tab-trigger](../gux-basic-tabs/gux-basic-tab-trigger)
+ - [gux-basic-tab](../gux-basic-tabs/gux-basic-tab)
 
 ### Depends on
 
@@ -27,7 +26,7 @@
 ```mermaid
 graph TD;
   gux-tooltip-title --> gux-tooltip
-  gux-basic-tab-trigger --> gux-tooltip-title
+  gux-basic-tab --> gux-tooltip-title
   style gux-tooltip-title fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

@@ -44,7 +44,7 @@ export class GuxBasicTabList {
     this.triggerIds = Array.from(
       this.root.querySelector('.gux-scrollable-section').children
     )
-      .map(trigger => trigger.getAttribute('trigger-id'))
+      .map(trigger => `${trigger.getAttribute('name')}-tab`)
       .join(' ');
   }
 
@@ -77,9 +77,9 @@ export class GuxBasicTabList {
   }
 
   @Method()
-  async guxSetActive(activePanelId: string): Promise<void> {
+  async guxSetActive(activeTab: string): Promise<void> {
     this.tabTriggers.forEach((tabTrigger, index) => {
-      const active = tabTrigger.panelId === activePanelId;
+      const active = tabTrigger.name === activeTab;
 
       tabTrigger.guxSetActive(active);
 
@@ -117,7 +117,7 @@ export class GuxBasicTabList {
   }
 
   async componentWillLoad(): Promise<void> {
-    this.tabTriggers = this.root.querySelectorAll('gux-basic-tab-trigger');
+    this.tabTriggers = this.root.querySelectorAll('gux-basic-tab');
     this.i18n = await buildI18nForComponent(this.root, tabsResources);
   }
 

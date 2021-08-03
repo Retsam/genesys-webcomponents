@@ -10,17 +10,14 @@ import {
 } from '@stencil/core';
 
 @Component({
-  styleUrl: 'gux-basic-tab-trigger.less',
-  tag: 'gux-basic-tab-trigger'
+  styleUrl: 'gux-basic-tab.less',
+  tag: 'gux-basic-tab'
 })
 export class GuxBasicTabTrigger {
   private buttonElement: HTMLButtonElement;
 
   @Prop()
-  triggerId: string;
-
-  @Prop()
-  panelId: string;
+  name: string;
 
   @State()
   active: boolean = false;
@@ -32,7 +29,7 @@ export class GuxBasicTabTrigger {
   @Listen('click')
   onClick() {
     if (!this.active && !this.guxDisabled) {
-      this.internalactivatetabpanel.emit(this.panelId);
+      this.internalactivatetabpanel.emit(this.name);
     }
   }
 
@@ -59,16 +56,15 @@ export class GuxBasicTabTrigger {
         }}
         type="button"
         disabled={this.guxDisabled}
-        id={this.triggerId}
+        id={`${this.name}-tab`}
         role="tab"
-        aria-controls={this.panelId}
+        aria-controls={`${this.name}-panel`}
         aria-selected={this.active.toString()}
         tabIndex={this.active ? 0 : -1}
         ref={el => (this.buttonElement = el)}
       >
-        <gux-tooltip-title icon-only={this.iconOnly} tab-width={113}>
-          <slot name="icon" />
-          <slot name="title" />
+        <gux-tooltip-title tab-width={113}>
+          <slot />
         </gux-tooltip-title>
       </button>
     );

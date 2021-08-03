@@ -30,7 +30,7 @@ export class GuxTabsBeta {
   root: HTMLElement;
 
   @Prop({ mutable: true })
-  activePanelId: string;
+  activeTab: string;
 
   @Prop()
   orientation: GuxBasicTabsOrientation = 'horizontal';
@@ -45,11 +45,11 @@ export class GuxTabsBeta {
   tabPanels: HTMLGuxBasicTabPanelElement[] = [];
 
   @Event()
-  guxactivepanelidchange: EventEmitter<string>;
+  guxactivetabchange: EventEmitter<string>;
 
-  @Watch('activePanelId')
-  watchActivePanelId(newValue: string) {
-    this.guxactivepanelidchange.emit(newValue);
+  @Watch('activeTab')
+  watchActiveTab(newValue: string) {
+    this.guxactivetabchange.emit(newValue);
   }
 
   @Listen('internalactivatetabpanel')
@@ -60,8 +60,8 @@ export class GuxTabsBeta {
   }
 
   @Method()
-  async guxActivate(panelId: string): Promise<void> {
-    this.activateTab(panelId, this.tabList, this.tabPanels);
+  async guxActivate(name: string): Promise<void> {
+    this.activateTab(name, this.tabList, this.tabPanels);
   }
 
   private onSlotchange(): void {
@@ -74,24 +74,22 @@ export class GuxTabsBeta {
     this.tabPanels =
       defaultSlot.assignedElements() as HTMLGuxBasicTabPanelElement[];
 
-    this.activateTab(this.activePanelId, this.tabList, this.tabPanels);
+    this.activateTab(this.activeTab, this.tabList, this.tabPanels);
   }
 
   private activateTab(
-    panelId: string,
+    name: string,
     tabList: HTMLGuxBasicTabListElement,
     panels: HTMLGuxBasicTabPanelElement[]
   ): void {
-    if (panelId) {
-      this.activePanelId = panelId;
+    if (name) {
+      this.activeTab = name;
     } else {
-      this.activePanelId = panels[0].panelId;
+      this.activeTab = panels[0].name;
     }
 
-    tabList.guxSetActive(this.activePanelId);
-    panels.forEach(panel =>
-      panel.guxSetActive(panel.panelId === this.activePanelId)
-    );
+    tabList.guxSetActive(this.activeTab);
+    panels.forEach(panel => panel.guxSetActive(panel.name === this.activeTab));
   }
 
   componentWillLoad(): void {

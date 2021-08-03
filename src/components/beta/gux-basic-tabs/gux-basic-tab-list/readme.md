@@ -7,7 +7,7 @@
 
 ## Methods
 
-### `guxSetActive(activePanelId: string) => Promise<void>`
+### `guxSetActive(activeTab: string) => Promise<void>`
 
 
 

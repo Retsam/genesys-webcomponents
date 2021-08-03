@@ -11,8 +11,7 @@
 | ------------- | -------------- | ----------- | --------- | ----------- |
 | `guxDisabled` | `gux-disabled` |             | `boolean` | `false`     |
 | `iconOnly`    | `icon-only`    |             | `boolean` | `false`     |
-| `panelId`     | `panel-id`     |             | `string`  | `undefined` |
-| `triggerId`   | `trigger-id`   |             | `string`  | `undefined` |
+| `name`        | `name`         |             | `string`  | `undefined` |
 
 
 ## Events
@@ -54,9 +53,9 @@ Type: `Promise<void>`
 ### Graph
 ```mermaid
 graph TD;
-  gux-basic-tab-trigger --> gux-tooltip-title
+  gux-basic-tab --> gux-tooltip-title
   gux-tooltip-title --> gux-tooltip
-  style gux-basic-tab-trigger fill:#f9f,stroke:#333,stroke-width:4px
+  style gux-basic-tab fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
 ----------------------------------------------
