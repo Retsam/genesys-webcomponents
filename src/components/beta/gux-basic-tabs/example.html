@@ -2,15 +2,15 @@
 
 <h2>Example 1 -- tabs left alignment scroll</h2>
 
-<gux-basic-tabs-beta id="abcd" class="example" active-tab="1-2">
+<gux-basic-tabs-beta class="example" active-tab="1-2">
   <gux-basic-tab-list slot="tab-list">
     <gux-basic-tab name="1-1">
       <span>Tab Header 1</span>
     </gux-basic-tab>
-    <gux-basic-tab name="1-2" id="tab-2">
+    <gux-basic-tab name="1-2">
       <span>Tab Header 2</span>
     </gux-basic-tab>
-    <gux-basic-tab name="1-3" id="tab-3">
+    <gux-basic-tab name="1-3">
       <span>Tab Header 3</span>
     </gux-basic-tab>
     <gux-basic-tab name="1-4">
@@ -36,35 +36,35 @@
     </gux-basic-tab>
   </gux-basic-tab-list>
   <gux-basic-tab-panel name="1-1">
-    <h3>Tab content 1</h3>
+    <span>Tab content 1</span>
     <div>The current time is: <span id="currentTime"></span></div>
     <div>
       The current selected panel name is: <span id="currentName"></span>
     </div>
   </gux-basic-tab-panel>
   <gux-basic-tab-panel name="1-2">
-    <h3>Tab content 2</h3>
+    <span>Tab content 2</span>
   </gux-basic-tab-panel>
   <gux-basic-tab-panel name="1-3">
-    <h3>Tab content 3</h3>
+    <span>Tab content 3</span>
   </gux-basic-tab-panel>
   <gux-basic-tab-panel name="1-4">
-    <h3>Tab content 4</h3>
+    <span>Tab content 4</span>
   </gux-basic-tab-panel>
   <gux-basic-tab-panel name="1-5">
-    <h3>Tab content 5</h3>
+    <span>Tab content 5</span>
   </gux-basic-tab-panel>
   <gux-basic-tab-panel name="1-6">
-    <h3>Tab content 6</h3>
+    <span>Tab content 6</span>
   </gux-basic-tab-panel>
   <gux-basic-tab-panel name="1-7">
-    <h3>Tab content 7</h3>
+    <span>Tab content 7</span>
   </gux-basic-tab-panel>
   <gux-basic-tab-panel name="1-8">
-    <h3>Tab content 8</h3>
+    <span>Tab content 8</span>
   </gux-basic-tab-panel>
   <gux-basic-tab-panel name="1-9">
-    <h3>Tab content 9</h3>
+    <span>Tab content 9</span>
   </gux-basic-tab-panel>
   <gux-basic-tab-panel name="1-10">Tab content 10</gux-basic-tab-panel>
 </gux-basic-tabs-beta>
@@ -135,7 +135,10 @@
       <gux-icon icon-name="user-group" screenreader-text="Users"></gux-icon>
     </gux-basic-tab>
     <gux-basic-tab name="4-5">
-      <gux-icon icon-name="trashcan" screenreader-text="Trash"></gux-icon>
+      <gux-icon
+        icon-name="attachment"
+        screenreader-text="Attachments"
+      ></gux-icon>
     </gux-basic-tab>
   </gux-basic-tab-list>
   <gux-basic-tab-panel name="4-1"> Tab content 1 </gux-basic-tab-panel>
@@ -166,7 +169,7 @@
       <span>Tab Header 4</span>
     </gux-basic-tab>
     <gux-basic-tab name="5-5">
-      <gux-icon icon-name="trashcan" decorative="true"></gux-icon>
+      <gux-icon icon-name="attachment" decorative="true"></gux-icon>
       <span>Tab Header 5</span>
     </gux-basic-tab>
   </gux-basic-tab-list>
@@ -190,18 +193,10 @@
     <gux-basic-tab name="6-3">
       <span>Tab Header 3</span>
     </gux-basic-tab>
-    <gux-basic-tab name="6-4">
-      <span>Tab Header 4</span>
-    </gux-basic-tab>
-    <gux-basic-tab name="6-5">
-      <span>Tab Header 5</span>
-    </gux-basic-tab>
   </gux-basic-tab-list>
   <gux-basic-tab-panel name="6-1"> Tab content 1 </gux-basic-tab-panel>
   <gux-basic-tab-panel name="6-2"> Tab content 2 </gux-basic-tab-panel>
   <gux-basic-tab-panel name="6-3"> Tab content 3 </gux-basic-tab-panel>
-  <gux-basic-tab-panel name="6-4"> Tab content 4 </gux-basic-tab-panel>
-  <gux-basic-tab-panel name="6-5"> Tab content 5 </gux-basic-tab-panel>
 </gux-basic-tabs-beta>
 
 <h2>Example 7 -- tabs center aligned</h2>
@@ -217,25 +212,14 @@
     <gux-basic-tab name="7-3">
       <span>Tab Header 3</span>
     </gux-basic-tab>
-    <gux-basic-tab name="7-4">
-      <span>Tab Header 4</span>
-    </gux-basic-tab>
-    <gux-basic-tab name="7-5">
-      <span>Tab Header 5</span>
-    </gux-basic-tab>
   </gux-basic-tab-list>
   <gux-basic-tab-panel name="7-1"> Tab content 1 </gux-basic-tab-panel>
   <gux-basic-tab-panel name="7-2"> Tab content 2 </gux-basic-tab-panel>
   <gux-basic-tab-panel name="7-3"> Tab content 3 </gux-basic-tab-panel>
-  <gux-basic-tab-panel name="7-4"> Tab content 4 </gux-basic-tab-panel>
-  <gux-basic-tab-panel name="7-5"> Tab content 5 </gux-basic-tab-panel>
 </gux-basic-tabs-beta>
 
 <style
   onload="(function () {
-    Array.from(document.querySelectorAll('.example')).forEach((example) => {
-      example.addEventListener('guxactivetabchange', notify)
-    });
     document.querySelector(`gux-basic-tab-panel[name='1-1']`).addEventListener('guxactivepanelchange', 
     (event) => {
       const currentTime = new Date().toLocaleTimeString();

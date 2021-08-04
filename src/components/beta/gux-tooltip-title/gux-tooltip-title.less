@@ -1,8 +1,15 @@
 gux-tooltip-title {
   cursor: default;
-
-  .gux-hidden {
-    display: none;
+  .gux-title-container {
+    display: flex;
+    gux-icon {
+      flex-shrink: 0;
+      margin-right: 3px;
+    }
+    & > * {
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
   }
 }
 .gux-tooltip-for-element {

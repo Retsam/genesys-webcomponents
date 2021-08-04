@@ -54,7 +54,7 @@ export class GuxTooltipTitle {
 
   render(): JSX.Element {
     return [
-      <span>
+      <span class="gux-title-container">
         <slot />
       </span>,
       this.renderTooltip()
