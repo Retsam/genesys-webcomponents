@@ -1,4 +1,5 @@
 import { newE2EPage, E2EElement } from '@stencil/core/testing';
+declare const axe: any;
 
 describe('gux-toggle', () => {
   it('should build', async () => {
@@ -44,6 +45,26 @@ describe('gux-toggle', () => {
         const element = await page.find('gux-toggle');
 
         expect(element.innerHTML).toMatchSnapshot();
+      });
+      it(`is accessible (${index + 1})`, async () => {
+        const page = await newE2EPage({ html });
+
+        await page.addScriptTag({
+          path: 'node_modules/axe-core/axe.min.js'
+        });
+
+        const axeResults = await page.evaluate(async () => {
+          const options = {
+            runOnly: {
+              type: 'tags',
+              values: ['wcag2a', 'wcag2aa']
+            }
+          };
+          const target = document.querySelector('gux-toggle');
+          return await axe.run(target, options);
+        });
+
+        expect(axeResults.violations).toHaveLength(0);
       });
     });
   });
