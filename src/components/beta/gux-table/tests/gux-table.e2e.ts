@@ -1,4 +1,5 @@
 import { E2EElement, E2EPage, newE2EPage } from '@stencil/core/testing';
+import { axeConfig } from '../../../../../tests/axeConfig';
 declare const axe: any;
 
 describe('gux-table-beta', () => {
@@ -33,8 +34,9 @@ describe('gux-table-beta', () => {
     expect(element).toHaveClass('hydrated');
   });
 
-  it('is accessible', async () => {
-    await page.setContent(`
+  describe('accessibility', () => {
+    it('passes axe-core automated tests', async () => {
+      await page.setContent(`
       <gux-table-beta lang="en">
         <table slot="data">
           <thead>
@@ -53,20 +55,17 @@ describe('gux-table-beta', () => {
       </gux-table-beta>
     `);
 
-    await page.addScriptTag({
-      path: 'node_modules/axe-core/axe.min.js'
-    });
-    const axeResults = await page.evaluate(async () => {
-      const options = {
-        runOnly: {
-          type: 'tags',
-          values: ['wcag2a', 'wcag2aa']
-        }
-      };
-      const target = document.querySelector('gux-table-beta');
-      return await axe.run(target, options);
-    });
 
-    expect(axeResults.violations).toHaveLength(0);
+      await page.addScriptTag({
+        path: 'node_modules/axe-core/axe.min.js'
+      });
+
+      const axeResults = await page.evaluate(async axeConfig => {
+        const target = document.querySelector('gux-table-beta');
+        return await axe.run(target, axeConfig);
+      });
+      const expectedViolations = 0;
+      expect(axeResults.violations).toHaveLength(expectedViolations);
+    });
   });
 });

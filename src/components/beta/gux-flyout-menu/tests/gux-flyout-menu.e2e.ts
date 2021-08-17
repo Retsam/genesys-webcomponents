@@ -1,4 +1,6 @@
 import { newE2EPage } from '@stencil/core/testing';
+import { axeConfig } from '../../../../../tests/axeConfig';
+declare const axe: any;
 
 describe('gux-flyout-menu', () => {
   const html = `
@@ -44,6 +46,23 @@ describe('gux-flyout-menu', () => {
       const element = await page.find('gux-flyout-menu-beta');
 
       expect(element.outerHTML).toMatchSnapshot();
+    });
+  });
+
+  describe('accessibility', () => {
+    it('passes axe-core automated tests', async () => {
+      const page = await newE2EPage({ html });
+
+      await page.addScriptTag({
+        path: 'node_modules/axe-core/axe.min.js'
+      });
+
+      const axeResults = await page.evaluate(async axeConfig => {
+        const target = document.querySelector('gux-flyout-menu-beta');
+        return await axe.run(target, axeConfig);
+      });
+      const expectedViolations = 0;
+      expect(axeResults.violations).toHaveLength(expectedViolations);
     });
   });
 });

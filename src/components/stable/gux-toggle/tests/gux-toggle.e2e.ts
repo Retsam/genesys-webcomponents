@@ -1,4 +1,5 @@
 import { newE2EPage, E2EElement } from '@stencil/core/testing';
+import { axeConfig } from '../../../../../tests/axeConfig';
 declare const axe: any;
 
 describe('gux-toggle', () => {
@@ -45,26 +46,6 @@ describe('gux-toggle', () => {
         const element = await page.find('gux-toggle');
 
         expect(element.innerHTML).toMatchSnapshot();
-      });
-      it(`is accessible (${index + 1})`, async () => {
-        const page = await newE2EPage({ html });
-
-        await page.addScriptTag({
-          path: 'node_modules/axe-core/axe.min.js'
-        });
-
-        const axeResults = await page.evaluate(async () => {
-          const options = {
-            runOnly: {
-              type: 'tags',
-              values: ['wcag2a', 'wcag2aa']
-            }
-          };
-          const target = document.querySelector('gux-toggle');
-          return await axe.run(target, options);
-        });
-
-        expect(axeResults.violations).toHaveLength(0);
       });
     });
   });
@@ -164,6 +145,53 @@ describe('gux-toggle', () => {
 
           expect(await element.getProperty('checked')).toBe(true);
         });
+      });
+    });
+  });
+
+  describe('accessibility', () => {
+    [
+      '<gux-toggle></gux-toggle>',
+      '<gux-toggle checked></gux-toggle>',
+      '<gux-toggle checked disabled></gux-toggle>',
+      '<gux-toggle checked-label="On" unchecked-label="Off"></gux-toggle>',
+      '<gux-toggle checked checked-label="on" unchecked-label="off"></gux-toggle>',
+      `<gux-toggle
+      checked-label="On"
+      unchecked-label="Off"
+      label-position="left"
+      ></gux-toggle>`,
+      `<gux-toggle
+        checked
+        checked-label="on"
+        unchecked-label="off"
+        label-position="right"
+      ></gux-toggle>`,
+      `<gux-toggle
+        checked-label="This is a long label for the toggle to test how it works"
+        unchecked-label="This is another long label for the toggle to test how it works"
+        label-position="left"
+      ></gux-toggle>`,
+      `<gux-toggle
+        checked
+        checked-label="This is a long label for the toggle to test how it works"
+        unchecked-label="This is another long label for the toggle to test how it works"
+        label-position="right"
+      ></gux-toggle>`
+    ].forEach((html, index) => {
+      it(`passes axe-core automated tests (${index + 1}`, async () => {
+        const page = await newE2EPage({ html });
+
+        await page.addScriptTag({
+          path: 'node_modules/axe-core/axe.min.js'
+        });
+
+        const axeResults = await page.evaluate(async axeConfig => {
+          const target = document.querySelector('gux-toggle');
+          return await axe.run(target, axeConfig);
+        });
+        const expectedViolations = 0;
+        expect(axeResults.violations).toHaveLength(expectedViolations);
       });
     });
   });
