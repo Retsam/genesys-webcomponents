@@ -38,6 +38,8 @@ export class GuxTooltipTitle {
       children.map(element => {
         if (element.tagName !== 'GUX-ICON') {
           this.titleName += element.innerHTML;
+        } else {
+          element.classList.add('gux-tooltip-icon-decorative');
         }
       });
       this.checkForTooltipHideOrShow();

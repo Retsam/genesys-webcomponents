@@ -16,7 +16,7 @@
 
 ### Used by
 
- - [gux-basic-tab](../gux-basic-tabs/gux-basic-tab)
+ - [gux-tab-beta](../gux-tabs-beta/gux-tab-beta)
 
 ### Depends on
 
@@ -26,7 +26,7 @@
 ```mermaid
 graph TD;
   gux-tooltip-title --> gux-tooltip
-  gux-basic-tab --> gux-tooltip-title
+  gux-tab-beta --> gux-tooltip-title
   style gux-tooltip-title fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
