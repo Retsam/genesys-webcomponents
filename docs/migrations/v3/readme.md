@@ -43,6 +43,12 @@ This new requirement is related to the a new dependency (vega-lite) which was ad
 
 'first-day-of-week' property removed. This is now determined via locale via the `gux-calendar` component.
 
+### gux-modal
+
+'trapFocus' property defaults to on - this causes the modal to automatically take focus when the modal is shown, contain it in the modal while it's visible, and when the modal is dismissed, focus returns to the originally focused element.
+
+This is the standard "best practice" for accessibility, but you may need to disable it for a number of reasons - for example if the modal element is always rendered but visually hidden or flows that require specific, custom managing of focus state.
+
 ## New Stable Components Promoted from Beta
 
 The following components have moved from beta to stable without any api changes.
